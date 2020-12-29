@@ -1,0 +1,184 @@
+h1 {
+    color:red;
+}
+
+body{
+    margin: auto;
+    color: black;
+    background-color: rgb(247, 244, 241);
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.45);
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: right;
+    display: block;
+    color: rgb(21, 16, 87);
+    text-align: center;
+    height: auto;
+    font-size: larger;
+    margin-top: 25px;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+
+}
+
+.top-logo {
+    width: 120px;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+    padding-top: 5px;
+    padding-left: 25px;
+}
+/* 
+#last {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    height: auto;
+    margin-right: 50px;
+    margin-top: 25px;
+    padding: 14px 16px;
+    text-decoration: none;
+} */
+
+/* Main content */
+.main {
+  margin-top: 90px; /* Add a top margin to avoid content overlay */
+  align-content: center;
+}
+
+.login {
+    float: left;
+    border: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 1px;
+    margin-left: 35px;
+    margin-top: 60px;
+    text-align: center;
+    width: 25%;
+    height: fit-content;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
+}
+/* 
+input{
+    margin: 10 10 10 10;
+    border-radius: 15px;
+    width: 75%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: auto;
+    text-align:center;
+    font-size: medium;
+} */
+
+input {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+.login-form{
+    padding-top: 50px;
+}
+
+hr {
+    color: rgb(145, 145, 145);
+}
+
+#btn{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 15px;
+    width: 180px;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+#btn:hover {
+    background-color:  rgb(12, 10, 102);
+}
+
+p {
+    text-align: start;
+    margin: 8px 45px 0px;
+}
+
+.announcements {
+    float: left;
+    border: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 1px;
+    margin-left: 25px;
+    height: 550px;
+    margin-top: 60px;
+    margin-right: 10px;
+    text-align: l;
+    width: 70%;
+    height: fit-content;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
+}
+
+.announcements h3 {
+    margin-left: 30px;
+
+}
+
+#head {
+    border-bottom: 2px solid;
+}
+
+#announcements_table{
+    width: 100%;
+}
+#announcements_table tr td {
+    padding: 15px 5px 5px 5px;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.footer {
+    width: 100%;
+    float: right;
+    margin-top: 50px;
+    border-top: 1px solid;
+    color: rgb(202, 189, 189);
+}
+
+.footer p {
+    text-align: center;
+    bottom: 0;
+}

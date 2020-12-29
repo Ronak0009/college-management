@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+    </head>
+    <body>
+        <div class="navbar">
+            <img src="{% static 'ganpat_logo.png' %}" alt="My image" class="top-logo">
+            {% include './navbar.html' %}
+        </div>
+
+        <div class='main'>
+            <div class="content">
+                <div class="login">
+                    <div id="head">
+                        <h3>Login</h3>
+                    </div>
+                    <form action="." method="POST" class="login-form">
+                        <p>Username:</p>
+                        <input type="text"/></br>
+                        <p>Password:</p>
+                        <input type= "password"></br>
+                        <input type="submit" value="Login" id="btn" style="margin-top: 15px;"/>
+                    </form>
+                    <p style="text-align: center;">New User?</p>
+                    <input type="submit" value="Sign Up" id="btn" style="margin-top: 15px;"/>
+                </div>
+
+                <div class="announcements">
+                    <div id="head">
+                        <h3>Announcements</h3>
+                        </table>
+                    </div>
+                    <table id="announcements_table">
+                        <tr>
+                            <td>Announcement 1</td>
+                        </tr>
+                        <tr>
+                            <td>Announcement 2</td>
+                        </tr>
+                        <tr>
+                            <td>Announcement 2</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </br>
+        <div class="footer">
+            <p>
+                Purvesh Gandhi & Ronak Kanthariya
+            </p>
+        </div>
+    </body>
+</html>
