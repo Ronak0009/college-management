@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'capstone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'college',
+        'NAME': 'college_management',
         'USER': 'project',
         'PASSWORD': 'project',
         'HOST': 'localhost',

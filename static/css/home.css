@@ -6,7 +6,7 @@ body{
     margin: auto;
     color: black;
     background-color: rgb(247, 244, 241);
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
@@ -85,17 +85,6 @@ body{
     padding-bottom: 20px;
     box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
 }
-/* 
-input{
-    margin: 10 10 10 10;
-    border-radius: 15px;
-    width: 75%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    height: auto;
-    text-align:center;
-    font-size: medium;
-} */
 
 input {
     width: 80%;
@@ -121,10 +110,6 @@ input:focus {
     padding-top: 50px;
 }
 
-hr {
-    color: rgb(145, 145, 145);
-}
-
 #btn{
     border-radius: 4px;
     background-color: rgb(19, 15, 235);
@@ -137,6 +122,7 @@ hr {
     height: auto;
     cursor: pointer;
     margin: 5px;
+    
   }
 
 #btn:hover {
