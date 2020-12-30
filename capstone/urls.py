@@ -19,5 +19,8 @@ import common
 
 urlpatterns = [
     path('', include('common.urls')),
+    path('students/', include('students.urls')),
+    path('college-admin/', include('admins.urls')),
+    path('staff/', include('staff.urls')),
     path('admin/', admin.site.urls)
 ]
