@@ -5,6 +5,9 @@ from django.shortcuts import render
 def login_view(request, *args, **kwargs):
     return render(request, "common/home.html")
 
+def registration_view(request,*args,**kwargs):
+    return render(request,"common/register.html")
+
 def student_registration(request,*args,**kwargs):
     return render(request,"common/studentreg.html")
 
