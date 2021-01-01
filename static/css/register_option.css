@@ -1,22 +1,20 @@
-#register {
+*{
     text-align: center;
     background-color: white;
-    position: fixed; /* or absolute */
-    top: 30%;
-    left: 50%;
-    padding: 50px;
+    margin: auto;
+    border-radius: 3px;
+    width: max-content;
+    padding: 10px;
     border: 1px rgb(255, 255, 255);
-    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
-    border-radius: 15px;
-    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.30);
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#register p {
+.register p {
     margin-bottom: 5%;
     font-size: 26px;
 }
-#register input[type=button]{
+.register input[type=button]{
     border-radius: 4px;
     background-color: rgb(19, 15, 235);
     border: none;
@@ -30,11 +28,11 @@
     margin: 5px;
 }
 
-#register input[type=button]:hover {
+.register input[type=button]:hover {
     background-color:  rgb(12, 10, 102);
 }
 
-#register input[type=button]:active{
+.register input[type=button]:active{
     background-color: rgb(19, 15, 235);
 }
 

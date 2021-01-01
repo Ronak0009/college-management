@@ -13,9 +13,9 @@ body{
     overflow: hidden;
     background-color: rgb(255, 255, 255);
     display: inline-block;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 100%; /* Full width */
+    position: fixed; 
+    top: 0;
+    width: 100%;
     box-shadow: 0px 5px 14px 0px rgba(0,0,0,0.45);
 }
 
@@ -37,7 +37,6 @@ body{
     text-decoration: none;
 }
 
-/* Change background on mouse-over */
 .navbar a:hover {
   background: #ddd;
   color: black;
@@ -61,27 +60,24 @@ body{
     background-color: rgb(12, 10, 102);
 }
 
-/* Main content */
 .main {
-  margin-top: 90px; /* Add a top margin to avoid content overlay */
-  align-content: center;
+  margin-top: 90px; 
   padding-top: 2%;
 }
 
-.login {
+.notification {
     float: left;
     border: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     border-style: solid;
-    border-radius: 15px;
+    border-radius: 3px;
     border-width: 1px;
     margin-left: 35px;
     margin-right: 1%;
-    text-align: center;
     width: 22.5%;
     box-sizing: border-box;
     padding-bottom: 20px;
-    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
 }
 
 input {
@@ -93,7 +89,7 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-  }
+}
 
 input:hover {
     background: #ddd;
@@ -120,7 +116,6 @@ input:focus {
     height: auto;
     cursor: pointer;
     margin: 5px;
-    
   }
 
 #btn:hover {
@@ -145,7 +140,7 @@ label{
     border: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     border-style: solid;
-    border-radius: 15px;
+    border-radius: 3px;
     border-width: 1px;
     height: auto;
     margin-left: 1%;
@@ -155,28 +150,30 @@ label{
     overflow: hidden;
     min-height: 700px;
     padding-bottom: 20px;
-    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
 }
 
-.announcements h3 {
+h3 {
     margin-left: 30px;
     position: static;
 
 }
+
 #head {
+    text-align: left;
     border-bottom: 2px solid;
 }
 
-#announcements_table{
+#table_list{
     width: 100%;
 }
-#announcements_table tr td {
+#table_list tr td {
     padding: 15px 5px 5px 5px;
     width: 100%;
     border-bottom: 1px solid black;
 }
 
-#announcements_table tr td:hover{
+#table_list tr td:hover{
     background-color: #ddd;
 }
 

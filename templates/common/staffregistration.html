@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
-
+{% block title %}Staff Registration{% endblock %}
 {% block content %}
 <div class ="form">
     <h2>Staff Registration</h2>
@@ -19,8 +19,9 @@
 
         {% endfor %}
         <tr>
-            <td colspan="2">
-                <input type="button" value="Register"/>
+            <td></td>
+            <td>
+                <input type="submit" value="Register"/>
             </td>
         </tr>
     </table>

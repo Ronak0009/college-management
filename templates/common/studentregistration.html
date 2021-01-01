@@ -1,35 +1,41 @@
 {% extends './base.html' %}
 {% load static %}
 
+{% block title %}Student Registration{% endblock %}
+
 {% block content %}
-<div class ="form">
+<div class="reg_page">
+    <div class="form">
     <h2>Student Registration</h2>
-    <hr>
-<form action="." method="POST"> {% csrf_token %}
+    <hr/>
+
+    <form action="." method="POST"> {% csrf_token %}
     <table>
         {% for field in form %}
         <tr>
-        <td class="label">
-            {{ field.label }}
-        </td>
-        <td class="field">
-            {{ field }}
-        </td>
-    </tr>
-
+            <td class="label">
+                {{ field.label }}
+            </td>
+            <td class="field">
+                {{ field }}
+            </td>
+        </tr>
         {% endfor %}
+
         <tr>
-            <td colspan="2">
-                <input type="button" value="Register"/>
+            <td></td>
+            <td>
+                <input type="submit" value="Register"/>
             </td>
         </tr>
     </table>
+    </form>
 </div>
-</form>
+
 </br>
 <div class="footer">
     <hr>
         Purvesh Gandhi & Ronak Kanthariya
 </div>
-
+</div>
 {% endblock %}  

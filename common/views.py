@@ -3,7 +3,7 @@ from students.forms import StudentForm
 from staff.forms import StaffForm
 
 # Create your views here.
-# hello ronak
+
 def login_view(request, *args, **kwargs):
     return render(request, "common/home.html")
 
@@ -12,7 +12,6 @@ def admin_login(request,*args,**kwargs):
 
 def registration_view(request,*args,**kwargs):
     return render(request,"common/register.html")
-
 
 def student_registration(request,*args,**kwargs):
     f=StudentForm()
