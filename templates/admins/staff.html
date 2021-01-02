@@ -1,5 +1,65 @@
 {% extends './base.html' %}
+{% load static %}
 
+
+{% block title %}Admin-Staff{% endblock %}
 {% block content %}
+<div class="stafflabel">
+    <p>Search Staff</p>
+</div>
+<div class="searchstaff">
+    <input type="text" name="sname" id="sname" placeholder="Faculty Name">
+    <select name="Branch" class=branch>
+        <option value="-1" selected>Branch</option>
+       <option value="ce">Computer</option>
+       <option value="it">Information Technology</option>
+       <option value="me">Mechanical</option>
+   </select>
+   <select name="sem" class="sem">
+    <option value="-1" selected>Sem</option>
+   <option value="I">I</option>
+   <option value="II">II</option>
+   <option value="III">III</option>
+</select>
+<input type="submit" name="search" id="search" value="Search">
+<input type="submit" name="assign" id="assign" value="Assign Courses" onclick="on()">
+
+</div>
+<div class="Datasection_staff">
+    <table id="staff_list1" border="1">
+        <tr>
+            <td>Name</td>
+            <td>Id-Number</td>
+            <td>Branch</td>
+            <td>Sem</td>
+            <td>Actions</td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td><a href="url">View</a></td>
+        </tr>
+    </table>
+
+</div>
+<div class="Pendingacc_staff">  
+    <div id="head">
+        <h3>Pending Accounts</h3>
+    </div>
+    <table id="staff_list2">
+        <tr>
+            <td>Faculty 1</td>
+        </tr>
+        <tr>
+            <td>Faculty 2</td>
+        </tr>
+        <tr>
+            <td>Faculty 3</td>
+        </tr>
+    </table>
+</div>
 
 {% endblock %}
+
