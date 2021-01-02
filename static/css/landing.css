@@ -5,6 +5,7 @@ h1 {
 body{
     margin: auto;
     color: black;
+    background-attachment: fixed;
     background-color: rgb(247, 244, 241);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -61,9 +62,9 @@ body{
     background-color: rgb(12, 10, 102);
 }
 
-/* Main content */
+
 .main {
-  margin-top: 90px; /* Add a top margin to avoid content overlay */
+  margin-top: 90px; 
   align-content: center;
   padding-top: 2%;
 }
@@ -73,7 +74,7 @@ body{
     border: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     border-style: solid;
-    border-radius: 15px;
+    border-radius: 3px;
     border-width: 1px;
     margin-left: 35px;
     margin-right: 1%;
@@ -81,7 +82,7 @@ body{
     width: 22.5%;
     box-sizing: border-box;
     padding-bottom: 20px;
-    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
 }
 
 input {
@@ -145,7 +146,7 @@ label{
     border: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     border-style: solid;
-    border-radius: 15px;
+    border-radius: 3px;
     border-width: 1px;
     height: auto;
     margin-left: 1%;
@@ -155,7 +156,7 @@ label{
     overflow: hidden;
     min-height: 700px;
     padding-bottom: 20px;
-    box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.30);
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
 }
 
 .announcements h3 {
@@ -183,11 +184,13 @@ label{
 
 .footer {
     width: 100%;
+    background-color: rgb(247, 244, 241);
     float: right;
     margin-top: 50px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
+    bottom: 10;
     border-top: 1px solid;
-    color: rgb(202, 189, 189);
+    color: rgb(153, 144, 144);
 }
 
 .footer p {

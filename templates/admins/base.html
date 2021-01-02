@@ -1,8 +1,8 @@
 {% load static %}
 <html>
     <head>
-        <title>Admin</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+        <title>{% block title %}Admin{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/adminhome.css' %}"/>
     </head>
     <body>
         <div class="header">
@@ -17,7 +17,6 @@
                 {% block content %}
                     content here
                 {% endblock %}
-                
             </div>
             </div>
         </br>

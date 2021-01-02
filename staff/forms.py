@@ -1,5 +1,5 @@
 from django import forms
-from staff.models import staff1
+from staff.models import Staff
 
 class StaffForm(forms.ModelForm):
     gender_choice=(('M','Male'),
@@ -9,14 +9,18 @@ class StaffForm(forms.ModelForm):
     role_choices=(('S','Student'),
                         ('F','Faculty'),)
 
-    branch_choices=(('Ce','Computer Engineering'),
-                    ('It','Information Technology '),)  
-
-    sem_choices=(('1','I'),
-                       ('2','II'),
-                       ('3','III'),)   
-    fullname = forms.CharField(label='Full Name:',
-                widget=forms.TextInput(attrs={"placeholder":"Your Full name",
+    branch_choices= Staff.branch_choices
+  
+    firstName = forms.CharField(label='First Name:',
+                widget=forms.TextInput(attrs={"placeholder":"Your first name",
+                                             "size":"40",
+                                            "class":"text"}))
+    middleName = forms.CharField(label='Middle Name:', required=False,
+                widget=forms.TextInput(attrs={"placeholder":"Your middle name (optional)",
+                                             "size":"40",
+                                            "class":"text"}))
+    lastName = forms.CharField(label='Last Name:',
+                widget=forms.TextInput(attrs={"placeholder":"Your last name",
                                              "size":"40",
                                             "class":"text"}))
     username = forms.CharField(label='Username:',
@@ -31,11 +35,6 @@ class StaffForm(forms.ModelForm):
                 widget=forms.PasswordInput(attrs={"placeholder":"Re-enter your password",
                                              "size":"40",
                                              "class":"text"}))
-
-    # enrollment = forms.CharField(label='Enrollment Number:',
-    #             widget=forms.TextInput(attrs={"placeholder":"Your enrolment number",
-    #                                          "size":"40",
-    #                                          "class":"text"}))
     mobile=forms.CharField(label='Mobile:',
                 widget=forms.TextInput(attrs={"placeholder":"Your mobile number",
                                              "size":"40",
@@ -43,7 +42,7 @@ class StaffForm(forms.ModelForm):
    
     gender=forms.ChoiceField(label="Gender:",choices=gender_choice,
                          widget=forms.Select(attrs={
-                             "class":"choice1",})) 
+                             "class":"choice1"})) 
 
     role=forms.ChoiceField(label="Your Role:",choices=role_choices,
                           widget=forms.Select(attrs={
@@ -51,10 +50,6 @@ class StaffForm(forms.ModelForm):
     branch=forms.ChoiceField(label="Branch:",choices=branch_choices,
                          widget=forms.Select(attrs={
                              "class":"choice3",})) 
-    sem=forms.ChoiceField(label="Semester:",choices=sem_choices,
-                         widget=forms.Select(attrs={
-                             "class":"choice4",})) 
-    
                           
     date = forms.CharField(label="Date of Birth:",
                 widget=forms.TextInput(attrs={
@@ -68,9 +63,11 @@ class StaffForm(forms.ModelForm):
                                              'type':"email",
                                              "class":"text"}))
     class Meta:
-        model = staff1
+        model = Staff
         fields= [
-            'fullname',
+            'firstName',
+            'middleName',
+            'lastName',
             'date',
             'gender',
             'username',
@@ -79,22 +76,9 @@ class StaffForm(forms.ModelForm):
             'email',
             'mobile',
             'branch',
-            'sem',
             'role',
         ]
 
     def clean_firstName(self, *args, **kwargs):
-        name = self.cleaned_data.get("firstName")
-        print(name)
-        if "purvesh" in name.lower():
-            print("This is a good name!")
-            name += " Gandhi"
-            return name
-        else:
-            raise forms.ValidationError("Bad name!")
-
-class RawStudentForm(forms.Form):
-    firstName = forms.CharField()
-    lastName = forms.CharField()
-    enrollment = forms.CharField()
+        pass
     

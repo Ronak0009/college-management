@@ -1,22 +1,25 @@
 from django import forms
-from students.models import student1
+from students.models import Student
 
 class StudentForm(forms.ModelForm):
     gender_choice=(('M','Male'),
                    ('F','Female'),
                    ('O','Other'))
 
-    # college_choices=(('Uvpce','U.V Patel'),
-    #                    ('Bspp','B.S Patel'))
+    branch_choices= Student.branch_choices 
 
-    branch_choices=(('Ce','Computer Engineering'),
-                    ('It','Information Technology '),)  
+    sem_choices=Student.sem_choices
 
-    sem_choices=(('1','I'),
-                       ('2','II'),
-                       ('3','III'),)   
-    fullname = forms.CharField(label='Full Name:',
-                widget=forms.TextInput(attrs={"placeholder":"Your Full name",
+    firstName = forms.CharField(label='First Name:',
+                widget=forms.TextInput(attrs={"placeholder":"Your first name",
+                                             "size":"40",
+                                            "class":"text"}))
+    middleName = forms.CharField(label='Middle Name:', required=False,
+                widget=forms.TextInput(attrs={"placeholder":"Your middle name (optional)",
+                                             "size":"40",
+                                            "class":"text"}))
+    lastName = forms.CharField(label='Last Name:',
+                widget=forms.TextInput(attrs={"placeholder":"Your last name",
                                              "size":"40",
                                             "class":"text"}))
     username = forms.CharField(label='Username:',
@@ -43,35 +46,35 @@ class StudentForm(forms.ModelForm):
    
     gender=forms.ChoiceField(label="Gender:",choices=gender_choice,
                          widget=forms.Select(attrs={
-                             "class":"choice1",})) 
+                             "class":"choice1",
+                             })) 
 
-    # college=forms.ChoiceField(label="Name of College:",choices=college_choices,
-    #                      widget=forms.Select(attrs={
-    #                          "class":"choice2",})) 
     branch=forms.ChoiceField(label="Branch:",choices=branch_choices,
                          widget=forms.Select(attrs={
                              "class":"choice3",})) 
+
     sem=forms.ChoiceField(label="Semester:",choices=sem_choices,
                          widget=forms.Select(attrs={
                              "class":"choice4",})) 
-    
-                          
+
     date = forms.CharField(label="Date of Birth:",
                 widget=forms.TextInput(attrs={
                     "placeholder":"dd/mm/yyyy",
                     "class":"datefield",
                     'type':"date"
                 }))
-    email = forms.EmailField(label="Email:", required=False,
+    email = forms.EmailField(label="Email:",
                 widget=forms.EmailInput(attrs={"placeholder":"Your email",
                                              "size":"40",
                                              'type':"email",
                                              "class":"text"}))
     class Meta:
-        model = student1
+        model = Student
         fields= [
+            'firstName',
+            'middleName',
+            'lastName',
             'enrollment',
-            'fullname',
             'date',
             'gender',
             'username',

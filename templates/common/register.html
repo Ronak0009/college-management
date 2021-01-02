@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register_option.css' %}"/>
+</head>
+
+<div class="register">
+<p>
+    Are you a staff member or a student?
+</p>
+<input type="button" value="Staff" onclick="location.href='../staff-registration'"/>
+<input type="button" value="Student" onclick="location.href='../student-registration'"/>
+</div>
+<!-- <div class="footer">
+    <p>
+        Purvesh Gandhi & Ronak Kanthariya
+    </p>
+</div> -->
+{% endblock %}

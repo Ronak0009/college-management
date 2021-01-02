@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/landing.css' %}"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
@@ -30,7 +30,7 @@
                         <input type="submit" value="Login" id="btn" style="margin-top: 15px;"/>
                     </form>
                     <p style="text-align: center;">New User?</p>
-                    <input type="submit" value="Sign Up" id="btn" style="margin-top: 15px;"/>
+                    <input type="submit" value="Sign Up" id="btn" onclick="location.href='../register'" style="margin-top: 15px;" />
                 </div>
 
                 <div class="announcements">
@@ -52,10 +52,11 @@
                 </div>
             </div>
         </br>
+    </div>
         <div class="footer">
             <p>
                 Purvesh Gandhi & Ronak Kanthariya
             </p>
-        </div>
+        
     </body>
 </html>
