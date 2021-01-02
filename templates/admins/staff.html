@@ -2,7 +2,12 @@
 {% load static %}
 
 
-{% block title %}Admin-Staff{% endblock %}
+{% block title %}Admin - Staff{% endblock %}
+
+{% block bodyclass %}
+    <body id="staff" onload="changeActive(this.id)">
+{% endblock %}
+
 {% block content %}
 <div class="stafflabel">
     <p>Search Staff</p>

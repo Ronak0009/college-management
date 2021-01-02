@@ -2,6 +2,11 @@
 {% load static %}
 
 {% block title %}Home - Admin{% endblock %}
+
+{% block bodyclass %}
+    <body id="home" onload="changeActive(this.id)">
+{% endblock %}
+
 {% block content %}
 <!-- <html>
     <head>
