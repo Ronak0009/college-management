@@ -1,0 +1,28 @@
+{% load static %}
+<html>
+    <head>
+        <title>Student</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+    </head>
+    <body>
+        <div class="navbar">
+            <img src="{% static 'ganpat_logo.png' %}" alt="My image" class="top-logo">
+            {% include './navbar.html' %}
+        </div>
+
+        <div class='main'>
+            <div class="content">
+                {% block content %}
+                    content here
+                {% endblock %}
+                
+            </div>
+            </div>
+        </br>
+        <div class="footer">
+            <p>
+                Purvesh Gandhi & Ronak Kanthariya
+            </p>
+        </div>
+    </body>
+</html>

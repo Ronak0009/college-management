@@ -1,0 +1,61 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Home - Admin{% endblock %}
+{% block content %}
+<!-- <html>
+    <head>
+        <title>Admin-Login</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/adminhome.css' %}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="header">
+            <a href="{{ '../login' }}"><img src="{% static 'ganpat_logo.png' %}" alt="My image" class="top-logo"></a>
+            <div class="navbar">
+                {% include './navbar.html' %}
+            </div>
+        </div> -->
+
+        <!-- <div class='main'> -->
+<div class="notification">
+    <div id="head">
+        <h3>Notifications</h3>
+    </div>
+    <table id="table_list">
+        <tr>
+            <td>Notification 1</td>
+        </tr>
+        <tr>
+            <td>Notification 2</td>
+        </tr>
+        <tr>
+            <td>Notification 3</td>
+        </tr>
+    </table>
+</div>
+
+<div class="announcements">
+    <div id="head">
+        <h3>Announcements <input type="button" value="Manage Announcements" /></h3>
+    </div>
+    <table id="table_list">
+        <tr>
+            <td>Announcement 1</td>
+        </tr>
+        <tr>
+            <td>Announcement 2</td>
+        </tr>
+        <tr>
+            <td>Announcement 3</td>
+        </tr>
+    </table>
+</div>
+        {% endblock %}
+        <!-- <div class="footer">
+            <p>
+                Purvesh Gandhi & Ronak Kanthariya
+            </p>
+        </div>
+    </body>
+</html> -->
