@@ -134,20 +134,24 @@ class StudentForm(forms.ModelForm):
 
         # validates enrolment number
         try:
+            en_not_valid = False
             if not re.search("^[0-9]*$", enrolment):
                 en_error = "Not a valid enrolment number"
+                en_not_valid = True
                 raise forms.ValidationError(en_error)
+                
         except forms.ValidationError as e:
             self.add_error('enrolment', e)
         
-        # checks if enrolment already exists
-        try:
-            if Student.objects.filter(enrolment=enrolment).exists():
-                enrolment_exists_error = enrolment + " is already associated</br>with another account."
-                enrolment_exists_error = mark_safe(enrolment_exists_error)
-                raise forms.ValidationError(enrolment_exists_error)
-        except forms.ValidationError as e:
-            self.add_error('enrolment', e)
+        # if enrolment number is valid, checks if enrolment already exists
+        if en_not_valid == False:
+            try:
+                if Student.objects.filter(enrolment=enrolment).exists():
+                    enrolment_exists_error = enrolment + " is already associated</br>with another account."
+                    enrolment_exists_error = mark_safe(enrolment_exists_error)
+                    raise forms.ValidationError(enrolment_exists_error)
+            except forms.ValidationError as e:
+                self.add_error('enrolment', e)
 
         # validates password safety
         try:
@@ -164,56 +168,68 @@ class StudentForm(forms.ModelForm):
         except forms.ValidationError as e:
             self.add_error('confirm_passwd', e)
         
-        # checks if username already exists
-        try:
-            if Student.objects.filter(username=username).exists() or Staff.objects.filter(username=username).exists():
-                username_exists_error = username + ' is already taken.</br>Select a different username.'
-                username_exists_error = mark_safe(username_exists_error)
-                raise forms.ValidationError(username_exists_error)
-        except forms.ValidationError as e:
-            self.add_error('username', e)
-
         # validates username
         try:
+            username_not_valid = False
             if not re.search(r'^\w+$', username):
                 username_error = mark_safe("Username can only contain alphanumeric</br>characters and the underscore.")
+                username_not_valid = True
                 raise forms.ValidationError(username_error)
         except forms.ValidationError as e:
             self.add_error('username', e)
 
+        # If username is valid, checks if username already exists
+        if username_not_valid == False:
+            try:
+                if Student.objects.filter(username=username).exists() or Staff.objects.filter(username=username).exists():
+                    username_exists_error = username + ' is already taken.</br>Select a different username.'
+                    username_exists_error = mark_safe(username_exists_error)
+                    raise forms.ValidationError(username_exists_error)
+            except forms.ValidationError as e:
+                self.add_error('username', e)
+
         # validates mobile number
         try:
+            mobile_not_valid = False
             if not re.search("^[0-9]{10}$",mobile):
                 mobile_error = "Not a valid phone number"
+                mobile_not_valid = True
                 raise forms.ValidationError("Not a valid phone number")
         except forms.ValidationError as e:
             self.add_error('mobile', e)
         
-        # checks if mobile is already used
-        try:
-            if Student.objects.filter(mobile=mobile).exists() or Staff.objects.filter(mobile=mobile).exists():
-                mobile_exists_error = 'This mobile number is already</br>associated with an account.'
-                mobile_exists_error = mark_safe(mobile_exists_error)
-                raise forms.ValidationError(mobile_exists_error)
-        except forms.ValidationError as e:
-            self.add_error('mobile', e)
+        # if mobile is valid, checks if mobile is already used
+        if mobile_not_valid == False:
+            try:
+                if Student.objects.filter(mobile=mobile).exists() or Staff.objects.filter(mobile=mobile).exists():
+                    mobile_exists_error = 'This mobile number is already</br>associated with an account.'
+                    mobile_exists_error = mark_safe(mobile_exists_error)
+                    raise forms.ValidationError(mobile_exists_error)
+            except forms.ValidationError as e:
+                self.add_error('mobile', e)
 
         # validates email
         try:
+            email_not_valid = False
             if not re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$', email):
                 email_error = "Not a valid email"
+                email_not_valid = True
                 raise forms.ValidationError(email_error)
         except forms.ValidationError as e:
             self.add_error('email', e)
         
-        # checks if email is already used
-        try:
-            if Student.objects.filter(email=email).exists() or Staff.objects.filter(email=email).exists():
-                email_exists_error = 'This email is already associated</br>with an account'
-                email_exists_error = mark_safe(email_exists_error)
-                raise forms.ValidationError(email_exists_error)
-        except forms.ValidationError as e:
-            self.add_error('email', e)
+        # if email is valid, checks if email is already used
+
+        if email_not_valid == False:
+            try:
+                if Student.objects.filter(email=email).exists() or Staff.objects.filter(email=email).exists():
+                    email_exists_error = 'This email is already associated</br>with an account'
+                    email_exists_error = mark_safe(email_exists_error)
+                    raise forms.ValidationError(email_exists_error)
+            except forms.ValidationError as e:
+                self.add_error('email', e)
+            else:
+                return cleaned_data
         else:
             return cleaned_data
 
