@@ -15,7 +15,6 @@ class StudentForm(forms.ModelForm):
 
     sem_choices=Student.sem_choices
     
-
     firstName = forms.CharField(label='First Name:',
                 widget=forms.TextInput(attrs={"placeholder":"Your first name",
                                              "size":"40",
@@ -95,13 +94,61 @@ class StudentForm(forms.ModelForm):
     
     def clean(self, *args, **kwargs):
         cleaned_data = super().clean()
+        firstName = str(self.cleaned_data.get("firstName"))
+        middleName = str(self.cleaned_data.get("middleName"))
+        lastName = str(self.cleaned_data.get("lastName"))
         passwd = str(self.cleaned_data.get("passwd"))
         confirm_passwd = str(self.cleaned_data.get("confirm_passwd"))
         username = str(self.cleaned_data.get("username"))
         mobile = str(self.cleaned_data.get("mobile"))
         email = str(self.cleaned_data.get("email"))
         enrolment = str(self.cleaned_data.get("enrolment"))
-        print(passwd, confirm_passwd)
+
+        # validates first name
+        try:
+            if not re.search("^[A-Za-z]+$", firstName):
+                fn_error = "Not a valid first name"
+                raise forms.ValidationError(fn_error)
+        except forms.ValidationError as e:
+            self.add_error('firstName', e)
+        
+        # validates middle name
+        try:
+            if middleName != '' and middleName != None:
+                if not re.search("^[A-Za-z]+$", middleName):
+                    mn_error = "Not a valid middle name"
+                    raise forms.ValidationError(mn_error)
+        except forms.ValidationError as e:
+            if middleName != '' or middleName != None:
+                self.add_error('middleName', e)
+        
+        # validates last name
+        try:
+            if not re.search("^[A-Za-z]+$", lastName):
+                ln_error = "Not a valid last name"
+                raise forms.ValidationError(ln_error)
+            else:
+                pass
+        except forms.ValidationError as e:
+            self.add_error('lastName', e)
+
+        # validates enrolment number
+        try:
+            if not re.search("^[0-9]*$", enrolment):
+                en_error = "Not a valid enrolment number"
+                raise forms.ValidationError(en_error)
+        except forms.ValidationError as e:
+            self.add_error('enrolment', e)
+        
+        # checks if enrolment already exists
+        try:
+            if Student.objects.filter(enrolment=enrolment).exists():
+                enrolment_exists_error = enrolment + " is already associated</br>with another account."
+                enrolment_exists_error = mark_safe(enrolment_exists_error)
+                raise forms.ValidationError(enrolment_exists_error)
+        except forms.ValidationError as e:
+            self.add_error('enrolment', e)
+
         # validates password safety
         try:
             if not re.search('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$',passwd):
@@ -141,32 +188,32 @@ class StudentForm(forms.ModelForm):
                 raise forms.ValidationError("Not a valid phone number")
         except forms.ValidationError as e:
             self.add_error('mobile', e)
-
-        # checks if email is already used
+        
+        # checks if mobile is already used
         try:
-            if Student.objects.filter(email=email).exists() or Staff.objects.filter(email=email).exists():
-                username_exists_error = 'This email is already associated</br>with an account.'
-                username_exists_error = mark_safe(username_exists_error)
-                raise forms.ValidationError(username_exists_error)
+            if Student.objects.filter(mobile=mobile).exists() or Staff.objects.filter(mobile=mobile).exists():
+                mobile_exists_error = 'This mobile number is already</br>associated with an account.'
+                mobile_exists_error = mark_safe(mobile_exists_error)
+                raise forms.ValidationError(mobile_exists_error)
         except forms.ValidationError as e:
-            self.add_error('email', e)
+            self.add_error('mobile', e)
 
         # validates email
         try:
             if not re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$', email):
-                email_error = "Not a valid email bro"
+                email_error = "Not a valid email"
                 raise forms.ValidationError(email_error)
         except forms.ValidationError as e:
             self.add_error('email', e)
-
-        #validates enrolment number
+        
+        # checks if email is already used
         try:
-            if not re.search("^[0-9]*$", enrolment):
-                en_error = "Not a valid enrolment number"
-                raise forms.ValidationError(en_error)
+            if Student.objects.filter(email=email).exists() or Staff.objects.filter(email=email).exists():
+                email_exists_error = 'This email is already associated</br>with an account'
+                email_exists_error = mark_safe(email_exists_error)
+                raise forms.ValidationError(email_exists_error)
         except forms.ValidationError as e:
-            self.add_error('enrolment', e)
-
+            self.add_error('email', e)
         else:
             return cleaned_data
 
@@ -196,9 +243,6 @@ class StudentForm(forms.ModelForm):
     #         raise forms.ValidationError(errormsg)
     #     else:
     #         return passwd
-
-    
-
         
     # def clean_firstName(self, *args, **kwargs):
     #     name = self.cleaned_data.get("firstName")
