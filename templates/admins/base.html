@@ -3,8 +3,11 @@
     <head>
         <title>{% block title %}Admin{% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/adminhome.css' %}"/>
+        <script src="{% static 'javascript/admin.js' %}"></script> 
     </head>
-    <body>
+    {% block bodyclass %}
+    <body id="base" onload="changeActive(this.id)">
+    {% endblock %}
         <div class="header">
             <a href="{{ '../home' }}"><img src="{% static 'ganpat_logo.png' %}" alt="My image" class="top-logo"></a>
             <div class="navbar">

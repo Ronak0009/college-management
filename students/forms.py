@@ -1,10 +1,9 @@
 from django import forms
 from students.models import Student
+import django.contrib.auth.password_validation as pwdval
 
 class StudentForm(forms.ModelForm):
-    gender_choice=(('M','Male'),
-                   ('F','Female'),
-                   ('O','Other'))
+    gender_choice=Student.gender_choices
 
     branch_choices= Student.branch_choices 
 
@@ -35,25 +34,25 @@ class StudentForm(forms.ModelForm):
                                              "size":"40",
                                              "class":"text"}))
 
-    enrollment = forms.CharField(label='Enrollment Number:',
+    enrolment = forms.CharField(label='Enrolment Number:',
                 widget=forms.TextInput(attrs={"placeholder":"Your enrolment number",
                                              "size":"40",
                                              "class":"text"}))
-    mobile=forms.CharField(label='Mobile:',
+    mobile = forms.CharField(label='Mobile:',
                 widget=forms.TextInput(attrs={"placeholder":"Your mobile number",
                                              "size":"40",
                                              "class":"text"}))
    
-    gender=forms.ChoiceField(label="Gender:",choices=gender_choice,
+    gender = forms.ChoiceField(label="Gender:",choices=gender_choice,
                          widget=forms.Select(attrs={
                              "class":"choice1",
                              })) 
 
-    branch=forms.ChoiceField(label="Branch:",choices=branch_choices,
+    branch = forms.ChoiceField(label="Branch:",choices=branch_choices,
                          widget=forms.Select(attrs={
                              "class":"choice3",})) 
 
-    sem=forms.ChoiceField(label="Semester:",choices=sem_choices,
+    sem = forms.ChoiceField(label="Semester:",choices=sem_choices,
                          widget=forms.Select(attrs={
                              "class":"choice4",})) 
 
@@ -74,7 +73,7 @@ class StudentForm(forms.ModelForm):
             'firstName',
             'middleName',
             'lastName',
-            'enrollment',
+            'enrolment',
             'date',
             'gender',
             'username',
@@ -86,18 +85,15 @@ class StudentForm(forms.ModelForm):
             'sem',
         ]
 
-    def clean_firstName(self, *args, **kwargs):
-        name = self.cleaned_data.get("firstName")
-        print(name)
-        if "purvesh" in name.lower():
-            print("This is a good name!")
-            name += " Gandhi"
-            return name
-        else:
-            raise forms.ValidationError("Bad name!")
+    # def clean_firstName(self, *args, **kwargs):
+    #     name = self.cleaned_data.get("firstName")
+    #     print(name)
+    #     if "purvesh" in name.lower():
+    #         print("This is a good name!")
+    #         name += " Gandhi"
+    #         return name
+    #     else:
+    #         raise forms.ValidationError("Bad name!")
 
-class RawStudentForm(forms.Form):
-    firstName = forms.CharField()
-    lastName = forms.CharField()
-    enrollment = forms.CharField()
+
     

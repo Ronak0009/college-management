@@ -13,7 +13,8 @@ class Student(models.Model):
                        ('EE','Electrical Engineering'),
                        ('ME','Marine Engineering'),
                        ('AE','Automobile Engineering'),
-                       ('PE','Petrochemical Engineering'))    
+                       ('PE','Petrochemical Engineering'))
+
      sem_choices=(('1','I'),
                     ('2','II'),
                     ('3','III'),
@@ -23,21 +24,48 @@ class Student(models.Model):
                     ('7','VII'),
                     ('8','VIII'))              
 
-     firstName = models.CharField(max_length=70, default='')
-     middleName = models.CharField(max_length=70, default='')
-     lastName = models.CharField(max_length=70, default='')
-     username=models.CharField(max_length=70)
-     passwd = models.CharField(max_length=70)
-     confirm_passwd = models.CharField(max_length=70)
-     confirm_passwd = models.CharField(max_length=70)
-     enrollment = models.CharField(max_length=70, primary_key=True)
-     date = models.CharField(max_length=70)
-     branch = models.CharField(max_length=70)
-     mobile=models.CharField(max_length=10)
-     branch=models.CharField(max_length=70,choices=branch_choices)
-     sem=models.CharField(max_length=5,choices=sem_choices)
-     email = models.EmailField(max_length=70)
+     firstName = models.CharField(max_length=70,
+                     default='',
+                    verbose_name="First Name")
+
+     middleName = models.CharField(max_length=70,
+                    default='',
+                    verbose_name="Middle Name",
+                    blank=True)
+
+     lastName = models.CharField(max_length=70,
+                    default='',
+                    verbose_name="Last Name")
+
+     username=models.CharField(max_length=70,
+                    verbose_name="Username")
+
+     passwd = models.CharField(max_length=70,
+                    verbose_name="Password")
+                    
+     enrolment = models.CharField(max_length=70,
+                    primary_key=True,
+                    verbose_name="Enrolment Number")
+
+     date = models.DateField(max_length=70,
+                    verbose_name="Date of Birth")
+
+     mobile=models.CharField(max_length=10,
+               verbose_name="Mobile Number")
+
+     branch=models.CharField(max_length=70,
+                    verbose_name="Branch",
+                    choices=branch_choices)
+
+     sem=models.CharField(max_length=5,
+                    verbose_name="Semester",
+                    choices=sem_choices)
+
+     email = models.EmailField(max_length=70,
+                    verbose_name="Email")
      
-     gender=models.CharField(max_length=7,choices=gender_choices)
+     gender=models.CharField(max_length=7,
+                    verbose_name="Gender",
+                    choices=gender_choices)
 
 

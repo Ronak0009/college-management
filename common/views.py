@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from students.forms import StudentForm
 from staff.forms import StaffForm
+from students.models import Student
 
 # Create your views here.
 
@@ -14,8 +15,15 @@ def registration_view(request,*args,**kwargs):
     return render(request,"common/register.html")
 
 def student_registration(request,*args,**kwargs):
-    f=StudentForm()
-    return render(request,"common/studentregistration.html",{'form':f})
+    form = StudentForm()
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            Student.objects.create(**form.cleaned_data)
+            return redirect("../login")
+
+    return render(request,"common/studentregistration.html",{'form':form})
 
 def staff_registration(request,*args,**kwargs):
     f=StaffForm()
