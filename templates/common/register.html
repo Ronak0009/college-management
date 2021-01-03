@@ -1,17 +1,24 @@
 {% extends './base.html' %}
 {% load static %}
-{% block content %}
-<head>
-    <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/register_option.css' %}"/>
-</head>
 
-<div class="register">
-<p>
+{% block title %}
+<title>Register</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/registration_pages.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/register_option.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="register" style="padding:50px;">
+<div class="register-message">
+<p style="padding-bottom:10px;">
     Are you a staff member or a student?
 </p>
 <input type="button" value="Staff" onclick="location.href='../staff-registration'"/>
 <input type="button" value="Student" onclick="location.href='../student-registration'"/>
+</div>
 </div>
 <!-- <div class="footer">
     <p>

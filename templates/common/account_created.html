@@ -1,0 +1,20 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Account Created{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/registration_pages.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/register_option.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<div class="register">
+    <h1>Account created</h1>
+    <div class="register-message">
+        <p>
+            Your account has been created.</br>You are now an admin.
+        </p>
+    </div>  
+    <input type="button" value="Back to Login" onclick="location.href='../login'" id="login-redirect"/>
+{% endblock %}

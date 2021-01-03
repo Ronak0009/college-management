@@ -1,43 +1,72 @@
 from django.db import models
 
-
 class Staff(models.Model):
      gender_choices=(('M','Male'),('F','Female'),('O','Other'),)
-     branch_choices=(('CE','Computer Engineering'),
-                       ('IT','Information Technology'),
-                       ('EC','Electronics and Comm. Engineering'),
-                       ('BME','Bio-Medical Engineering'),
-                       ('MC','Mechantronics Engineering'),
-                       ('ME','Mechanical Engineering'),
-                       ('CE','Civil Engineering'),
-                       ('EE','Electrical Engineering'),
-                       ('ME','Marine Engineering'),
-                       ('AE','Automobile Engineering'),
-                       ('PE','Petrochemical Engineering'))    
-     sem_choices=(('1','I'),
-                    ('2','II'),
-                    ('3','III'),
-                    ('4','IV'),
-                    ('5','V'),
-                    ('6','VI'),
-                    ('7','VII'),
-                    ('8','VIII'))              
+     branch_choices=(('Computer Engineering','Computer Engineering'),
+                       ('Information Technology','Information Technology'),
+                       ('Electronics and Comm. Engineering','Electronics and Comm. Engineering'),
+                       ('Bio-Medical Engineering','Bio-Medical Engineering'),
+                       ('Mechantronics Engineering','Mechantronics Engineering'),
+                       ('Mechanical Engineering','Mechanical Engineering'),
+                       ('Civil Engineering','Civil Engineering'),
+                       ('Electrical Engineering','Electrical Engineering'),
+                       ('Marine Engineering','Marine Engineering'),
+                       ('Automobile Engineering','Automobile Engineering'),
+                       ('Petrochemical Engineering','Petrochemical Engineering'))  
 
-     firstName = models.CharField(max_length=70, default='')
-     middleName = models.CharField(max_length=70, default='')
-     lastName = models.CharField(max_length=70, default='')
-     username=models.CharField(max_length=70)
-     passwd = models.CharField(max_length=70)
-     confirm_passwd = models.CharField(max_length=70)
-     confirm_passwd = models.CharField(max_length=70)
-     date = models.CharField(max_length=70)
-     branch = models.CharField(max_length=70)
-     mobile=models.CharField(max_length=10)
-     branch=models.CharField(max_length=70,choices=branch_choices)
-     email = models.EmailField(max_length=70)
-     gender=models.CharField(max_length=7,choices=gender_choices)
+     designation_choices=(('Head of Department','Head of Department'),
+                    ('Professor','Professor'),
+                    ('Assistant Professor','Assistant Professor'),
+                    ('Lab Instructor', 'Lab Instructor'),
+                    ('Lab Assistant','Lab Assistant'))
 
-# Create your models here.
+     firstName = models.CharField(max_length=70,
+                     default='',
+                    verbose_name="First Name")
 
+     middleName = models.CharField(max_length=70,
+                    default='',
+                    verbose_name="Middle Name",
+                    blank=True)
 
-# Create your models here.
+     lastName = models.CharField(max_length=70,
+                    default='',
+                    verbose_name="Last Name")
+
+     username=models.CharField(max_length=70,
+                    verbose_name="Username")
+
+     passwd = models.CharField(max_length=70,
+                    verbose_name="Password")
+     
+     account_id = models.CharField(max_length=20,
+                    verbose_name="Account Id", default='', primary_key=True)
+
+     date = models.DateField(max_length=70,
+                    verbose_name="Date of Birth")
+
+     mobile = models.CharField(max_length=10,
+               verbose_name="Mobile Number")
+
+     branch = models.CharField(max_length=70,
+                    verbose_name="Branch",
+                    choices=branch_choices)
+
+     email = models.EmailField(max_length=70,
+                    verbose_name="Email")
+     
+     gender = models.CharField(max_length=7,
+                    verbose_name="Gender",
+                    choices=gender_choices)
+
+     designation = models.CharField(max_length=20,
+                    verbose_name="Designation",
+                    choices=designation_choices)
+
+     isAdmin=models.BooleanField(max_length=10,
+                    default=False)
+     
+     isPending = models.BooleanField(max_length=10,
+                    default=True)
+     
+
