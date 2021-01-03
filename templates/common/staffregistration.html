@@ -1,6 +1,8 @@
 {% extends './base.html' %}
 {% load static %}
+
 {% block title %}Staff Registration{% endblock %}
+
 {% block content %}
 <div class ="form">
     <h2>Staff Registration</h2>
@@ -9,11 +11,12 @@
     <table>
         {% for field in form %}
         <tr>
-        <td class="label">
+        <td class="label" style="vertical-align: top;">
             {{ field.label }}
         </td>
-        <td class="field">
+        <td class="field" style="vertical-align: top;">
             {{ field }}
+            <p> {{ field.errors }} </p>
         </td>
     </tr>
 

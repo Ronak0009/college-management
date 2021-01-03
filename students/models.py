@@ -42,6 +42,9 @@ class Student(models.Model):
 
      passwd = models.CharField(max_length=70,
                     verbose_name="Password")
+     
+     account_id = models.CharField(max_length=20,
+                    verbose_name="Account Id", default='')
                     
      enrolment = models.CharField(max_length=70,
                     primary_key=True,
@@ -67,5 +70,8 @@ class Student(models.Model):
      gender=models.CharField(max_length=7,
                     verbose_name="Gender",
                     choices=gender_choices)
+
+     isPending = models.BooleanField(max_length=10,
+                    default=True)
 
 
