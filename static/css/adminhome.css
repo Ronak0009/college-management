@@ -370,3 +370,39 @@ input[type=button]{
     width:20%;
     margin-left:650px;
 }
+
+/* Admin_profile*/
+.Admin_profile{
+    border: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    min-height: 520px;
+    width: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
+}
+#adminprofile {
+   width: 80%;
+   margin-left: 60px;
+   margin-top: 30px;
+   table-layout:fixed;
+}
+#adminprofile tr td  {
+    text-align: left;
+    font-size: 18px;
+    height: 55px;
+    width: 40%;
+}
+.profile_btn input[type=button]{
+  background-color: blue;
+  color: white;
+  width:27%;
+  margin:5 auto;
+  margin-left: 5%;
+  position: relative;
+  font-size: 18px;
+}
+
+

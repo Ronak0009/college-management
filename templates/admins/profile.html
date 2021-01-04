@@ -1,9 +1,53 @@
 {% extends './base.html' %}
 
+{% load static %}
+
+{% block title %}Admin - Profile{% endblock %}
+
 {% block bodyclass %}
     <body id="profile" onload="changeActive(this.id)">
 {% endblock %}
 
 {% block content %}
+
+<div class="Admin_profile">
+    <table  id="adminprofile">
+        <tr>
+          <td>Name:</td>
+          <td></td>
+          <td rowspan="3"> Image</td>
+        </tr>
+        <tr>
+          <td>Gender:</td>
+          <td ></td>
+        </tr>
+        <tr>
+          <td >Birth Date:</td>
+          <td ></td>
+        </tr>
+         <tr>
+          <td >Phone No:</td>
+          <td ></td>
+        </tr>
+         <tr>
+          <td >Email:</td>
+          <td ></td>
+        </tr>
+         <tr>
+          <td >Branch:</td>
+          <td ></td>
+        </tr>
+         <tr>
+          <td >Role:</td>
+          <td></td>
+        </tr>
+      </table>
+      <div class="profile_btn">
+        <input type="button" value="Edit Profile" id="Edit_btn" >
+        <input type="button" value="Change Admin" id="Change_btn"></div>
+      
+</div>
+</body>
+
 
 {% endblock %}
