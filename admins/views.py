@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from students.models import Student
 
 # Create your views here.
 
@@ -16,3 +17,14 @@ def admins_staff_view(request, *args, **kwargs):
 
 def admins_profile_view(request, *args, **kwargs):
     return render(request, "admins/profile.html")
+
+# for data extraction
+def admins_student_pending_detail_view(request,*args,**kwargs):
+    obj=Student.objects.filter(isPending=True)
+    return render(request,"admins/students.html",{'student':obj})
+
+def admins_student_detail_view(request,*args,**kwargs):
+    return render(request,"admins/students.html")
+   
+    
+    
