@@ -1,10 +1,16 @@
 from django.shortcuts import render
 from students.models import Student
+from datetime import datetime
 
 # Create your views here.
 
 def admins_home_view(request, *args, **kwargs):
-    return render(request, "admins/home.html")
+    time = datetime.now()
+    currentTime = time.strftime("%D %I:%M:%S %p")
+    context = {
+        'timestamp': currentTime,
+    }
+    return render(request, "admins/home.html",context)
 
 def admins_courses_view(request, *args, **kwargs):
     return render(request, "admins/courses.html")

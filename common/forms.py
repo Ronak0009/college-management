@@ -1,23 +1,26 @@
 from django import forms
 from .models import AppUser
+from django.utils.safestring import mark_safe
+import re
 
-class LoginForm(forms.ModelForm):
+class LoginForm(forms.Form):
     username = forms.CharField(label='Username:', min_length=6, max_length=40,
                 widget=forms.TextInput(attrs={"placeholder":"Your Username",
                                              "size":"40",
-                                             "class":"text"}))
+                                             "class":"text",
+                                             "name":"username"}))
     
     passwd = forms.CharField(label='Password:', min_length=8, max_length=40,
                 widget=forms.PasswordInput(attrs={"placeholder":"Your Password",
                                              "size":"40",
-                                             "class":"text"}))
-    
-    class Meta:
-        model = AppUser
-        fields = [
-            'username',
-            'password'
-        ]
+                                             "class":"text",
+                                             "name":"password"}))
+    # class Meta:
+    #     model = AppUser
+    #     fields = [
+    #         'username',
+    #         'passwd'
+    #     ]
 
     def clean(self, *args, **kwargs):
         cleaned_data = super().clean()

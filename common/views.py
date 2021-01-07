@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.contrib.auth.password_validation import validate_password, UserAttributeSimilarityValidator
+from django.contrib.auth import authenticate, login, logout
 from students.forms import StudentForm
 from staff.forms import StaffForm
+from .forms import LoginForm
 from students.models import Student
 from staff.models import Staff
 from common.models import AppUser
 from .methods import id_generator
-from django.core.exceptions import ValidationError
-from django.contrib.auth.password_validation import validate_password, UserAttributeSimilarityValidator
 
 # Create your views here.
 
@@ -18,25 +21,80 @@ def login_view(request, *args, **kwargs):
             username_input = details['username']
             passwd_input = details['passwd']
 
-            try:
-                if not AppUser.objects.filter(username=username_input):
-                    raise ValidationError('User does not exist')
-            except ValidationError as e:
-                form.add_error('username',e)
-                return render(request, 'common/home.html', {'form': form})
+            # try:
+            #     if not AppUser.objects.filter(username=username_input):
+            #         raise ValidationError('User does not exist')
+            # except ValidationError as e:
+            #     form.add_error('username',e)
+            #     return render(request, 'common/home.html', {'form': form})
 
-            credentials = AppUser.objects.get(username=username_input)
-            correct_username = credentials['username']
-            correct_password = credentials['passwd']
-            
+            # credentials = AppUser.objects.get(username=username_input)
+            # correct_username = getattr(credentials, 'username')
+            # correct_password = getattr(credentials, 'passwd')
+            # category = getattr(credentials, 'category')
+            # isAdmin = getattr(credentials, 'isAdmin')
+            # isPending = getattr(credentials, 'isPending')
+
             try:
-                if str(passwd_input) != str(correct_password):
-                    raise ValidationError('Incorrect password')
+                user = authenticate(request,username=username_input,
+                            password=passwd_input)
+                if user is None:
+                    raise ValidationError("Incorrect username or password")
             except ValidationError as e:
                 form.add_error('passwd',e)
                 return render(request, 'common/home.html', {'form': form})
 
-    return render(request, 'common/home.html', {'form': form})
+            if user is not None:
+                staffMember = Staff.objects.filter(username=username_input).first()
+                if staffMember:
+                    pending = getattr(staffMember,'isPending')
+                    if pending:
+                        return redirect('../pending-account')
+
+                    category = getattr(staffMember,'category')
+                    request.session['category'] = category
+                    login(request,user)
+                    if category == 'Admin':
+                        return redirect("../college-admin/home")
+                    elif category in ['Faculty', 'Staff', 'Head of Department']:
+                        return redirect("../staff/home")
+                
+                studentMember = Student.objects.filter(username=username_input).first()
+                if studentMember:
+                    pending = getattr(studentMember,'isPending')
+                    if pending:
+                        return redirect('../pending-account')
+
+                    request.session['category'] = 'Student'
+                    login(request,user)
+                    return redirect("../students/home")
+                
+            else:
+                print("bro..")
+                return render(request, 'common/home.html', {'form': form})
+            # try:
+            #     if str(passwd_input) != str(correct_password):
+            #         raise ValidationError('Incorrect password')
+            # except ValidationError as e:
+            #     form.add_error('passwd',e)
+            #     return render(request, 'common/home.html', {'form': form})
+            
+            # if isPending == True:
+            #     return redirect("../pending-account")
+            
+            # redirects according to category of user
+            # if category == 'Admin':
+            #     return redirect("../college-admin/home")
+            # elif category in ['Faculty', 'Staff', 'Head of Department']:
+            #     return redirect("../staff/home")
+            # elif category == 'Student':
+            #     return redirect("../students/home")
+        else:
+            form = LoginForm()
+            return render(request, 'common/home.html', {'form': form})
+    else:
+        form = LoginForm()
+        return render(request, 'common/home.html', {'form': form})
 
 def admin_login(request,*args,**kwargs):
     return render(request,"admins/home.html")
@@ -71,7 +129,6 @@ def student_registration(request,*args,**kwargs):
             except ValidationError as e:
                 form.add_error('passwd', e)
                 return render(request, "common/studentregistration.html", {'form': form})
-            
 
             # try:
             #     user_credentials = [new_username, new_fName, new_lName, new_mName, new_mobile, new_enrolment]
@@ -81,7 +138,6 @@ def student_registration(request,*args,**kwargs):
             # except ValidationError as e:
             #     form.add_error('passwd', e)
             #     return render(request, "common/studentregistration.html", {'form': form})
-            
 
             newStudent = Student(firstName=str(new_fName.capitalize()),
                         middleName=str(new_mName.capitalize()),
@@ -98,17 +154,28 @@ def student_registration(request,*args,**kwargs):
                         gender=str(new_gender),
                         isPending=True
                         )
+            
+            # newUser = AppUser(
+            #             firstName=str(new_fName.capitalize()),
+            #             lastName=str(new_lName.capitalize()),
+            #             username=str(new_username),
+            #             passwd=str(new_passwd),
+            #             email=str(new_email.lower()),
+            #             category='Student',
+            #             isAdmin=False,
+            #             isPending=True
+            # )
 
-            newUser = AppUser(
-                        firstName=str(new_fName.capitalize()),
-                        lastName=str(new_lName.capitalize()),
+            newUser = User.objects.create_user(
                         username=str(new_username),
-                        passwd=str(new_passwd),
+                        password=str(new_passwd),
+                        first_name=str(new_fName.capitalize()),
+                        last_name=str(new_lName.capitalize()),
                         email=str(new_email.lower()),
-                        category='Student',
-                        isAdmin=False,
-                        isPending=True
             )
+
+            # newDjangoUser.save()
+            newUser.save()
             newStudent.save()
             # Student.objects.create(**form.cleaned_data)
             return redirect("../pending-account")
@@ -191,19 +258,30 @@ def staff_registration(request,*args,**kwargs):
                         gender=str(new_gender),
                         designation=str(new_designation),
                         isAdmin=new_isAdmin,
-                        isPending=new_isPending
+                        isPending=new_isPending,
+                        category=str(new_category)
                         )
             
-            newUser = AppUser(
-                        firstName=str(new_fName.capitalize()),
-                        lastName=str(new_lName.capitalize()),
+            # newUser = AppUser(
+            #             firstName=str(new_fName.capitalize()),
+            #             lastName=str(new_lName.capitalize()),
+            #             username=str(new_username),
+            #             passwd=str(new_passwd),
+            #             email=str(new_email.lower()),
+            #             category=str(new_category),
+            #             isAdmin=new_isAdmin,
+            #             isPending=new_isPending
+            # )
+
+            newUser = User.objects.create_user(
                         username=str(new_username),
-                        passwd=str(new_passwd),
+                        password=str(new_passwd),
+                        first_name=str(new_fName.capitalize()),
+                        last_name=str(new_lName.capitalize()),
                         email=str(new_email.lower()),
-                        category=str(new_category),
-                        isAdmin=new_isAdmin,
-                        isPending=new_isPending
             )
+
+            # newDjangoUser.save()
             newStaff.save()
             newUser.save()
 

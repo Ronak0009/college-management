@@ -18,7 +18,7 @@ class AppUser(models.Model):
 
     username=models.CharField(max_length=70,
                     verbose_name="Username",
-                    primary_key=True)
+                    primary_key=True, unique=True)
 
     passwd = models.CharField(max_length=70,
                     verbose_name="Password")

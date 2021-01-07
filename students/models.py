@@ -22,7 +22,11 @@ class Student(models.Model):
                     ('5','V'),
                     ('6','VI'),
                     ('7','VII'),
-                    ('8','VIII'))              
+                    ('8','VIII'))  
+
+     categories = (
+          ('Student','Student'),
+          )            
 
      firstName = models.CharField(max_length=70,
                      default='',
@@ -73,5 +77,10 @@ class Student(models.Model):
 
      isPending = models.BooleanField(max_length=10,
                     default=True)
+     
+     category = models.CharField(max_length=70,
+                    verbose_name="Category",
+                    default="Student",
+                    choices=categories)
 
 
