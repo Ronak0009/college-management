@@ -20,11 +20,11 @@
                     </div>
                     <form action="." method="POST" class="login-form"> {% csrf_token %}
                         <div class="container">
-                            <label for="user">Username:</label></br>
+                            <label for="user">{{ form.username.label }}</label></br>
                             <input type="text" id="user" placeholder="Enter your username"/></br>
                         </div>
                         <div class="container">
-                            <label for="passwd">Password:</label></br>
+                            <label for="passwd">{{ form.passwd.label }}</label></br>
                             <input type= "password" id="passwd" placeholder="Enter your password"></br>
                         </div>
                         <input type="submit" value="Login" id="btn" style="margin-top: 15px;"/>
