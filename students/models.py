@@ -29,7 +29,7 @@ class Student(models.Model):
           )            
 
      firstName = models.CharField(max_length=70,
-                     default='',
+                    default='',
                     verbose_name="First Name")
 
      middleName = models.CharField(max_length=70,
