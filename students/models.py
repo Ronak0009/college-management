@@ -25,7 +25,7 @@ class Student(models.Model):
                     ('8','VIII'))              
 
      firstName = models.CharField(max_length=70,
-                     default='',
+                    default='',
                     verbose_name="First Name")
 
      middleName = models.CharField(max_length=70,
