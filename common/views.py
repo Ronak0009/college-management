@@ -11,7 +11,32 @@ from django.contrib.auth.password_validation import validate_password, UserAttri
 # Create your views here.
 
 def login_view(request, *args, **kwargs):
-    return render(request, "common/home.html")
+    if request.method == 'POST':
+        form = LoginForm(request.POST or None)
+        if form.is_valid():
+            details = form.cleaned_data
+            username_input = details['username']
+            passwd_input = details['passwd']
+
+            try:
+                if not AppUser.objects.filter(username=username_input):
+                    raise ValidationError('User does not exist')
+            except ValidationError as e:
+                form.add_error('username',e)
+                return render(request, 'common/home.html', {'form': form})
+
+            credentials = AppUser.objects.get(username=username_input)
+            correct_username = credentials['username']
+            correct_password = credentials['passwd']
+            
+            try:
+                if str(passwd_input) != str(correct_password):
+                    raise ValidationError('Incorrect password')
+            except ValidationError as e:
+                form.add_error('passwd',e)
+                return render(request, 'common/home.html', {'form': form})
+
+    return render(request, 'common/home.html', {'form': form})
 
 def admin_login(request,*args,**kwargs):
     return render(request,"admins/home.html")
