@@ -8,7 +8,7 @@ urlpatterns = [
     path('staff/', admins_staff_view, name="staff"),
     path('courses/', admins_courses_view, name="courses"),
     path('profile/', admins_profile_view, name="profile"),
-
+    path('logout/',logout_view, name='logout'),
     #new
     path('student-account-pending-details/',admins_student_pending_detail_view,name='studentsdetails'),
     path('student-account-details/',admins_student_detail_view,name='studentsdetails2'),

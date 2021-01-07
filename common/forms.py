@@ -1,5 +1,5 @@
 from django import forms
-from .models import AppUser
+# from .models import AppUser
 from django.utils.safestring import mark_safe
 import re
 

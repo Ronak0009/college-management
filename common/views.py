@@ -8,7 +8,7 @@ from staff.forms import StaffForm
 from .forms import LoginForm
 from students.models import Student
 from staff.models import Staff
-from common.models import AppUser
+# from common.models import AppUser
 from .methods import id_generator
 
 # Create your views here.
