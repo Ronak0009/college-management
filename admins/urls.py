@@ -12,4 +12,9 @@ urlpatterns = [
     #new
     path('student-account-pending-details/',admins_student_pending_detail_view,name='studentsdetails'),
     path('student-account-details/',admins_student_detail_view,name='studentsdetails2'),
+
+    #for edit
+    path('edit/<int:account_id>',admins_student_edit,name='studentedit'),
+    path('update/<int:account_id>/',edit_student,name='studentupdate'),
+
 ]

@@ -76,9 +76,7 @@ body{
   margin-top: 90px; 
   padding-top: 2%;
 }
-
-
-    
+  
 input {
     width: 80%;
     padding: 12px 20px;
@@ -90,7 +88,7 @@ input {
     box-sizing: border-box;
 }
 
-/* for student*/
+/*for student
 .searchstudent input[type=text]{
     width:18%;
     display: inline;
@@ -112,7 +110,7 @@ input {
     height: 6%;
     background-color:white;
     
-}
+}*/
 
 /* for staff */
 .searchstaff input[type=text]{
@@ -137,7 +135,21 @@ input {
     background-color:white;
     
 }
-#assign{
+
+/* new for student*/
+.newsearch input[type=text]{
+    width:40%;
+    margin-left: 15px;
+}  
+.newsearch input:hover{
+    background: #ddd;
+    color: black;
+}
+.newsearch input:focus{
+        background-color: rgb(241, 241, 241);
+    }
+
+#pending{
     width:14%;
     display: inline-block;
     font-size:16px;
@@ -147,21 +159,13 @@ input {
     margin-left: 12px;
 
 }
-#assign:hover{
+#pending:hover{
     background: #ddd;
     color: black;
 }
-/*for student*/
-.searchstudent input:hover{
-    background: #ddd;
-    color: black;
-}
-.searchstudent input:focus{
-        background-color: rgb(241, 241, 241);
-    }
+
 
 /*for staff*/
-
 .searchstaff input:hover{
     background: #ddd;
     color: black;
