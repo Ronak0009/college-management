@@ -16,3 +16,8 @@ def id_generator():
         else:
             break
     return new_account_id
+
+# def is_logged_in(category):
+#     if request.user.is_authenticated:
+
+#     else:

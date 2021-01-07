@@ -23,6 +23,16 @@
         </div> -->
 
         <!-- <div class='main'> -->
+<div id="welcome-msg">
+    <div id="welcome-content">
+        <div id="welcome-user">
+            <h2>Welcome, {{ request.user.first_name }}</h2>
+        </div>
+        <div id="timestamp">
+            {{ timestamp }}
+        </div>
+    </div>
+</div>
 <div class="notification">
     <div id="head">
         <h3>Notifications</h3>
