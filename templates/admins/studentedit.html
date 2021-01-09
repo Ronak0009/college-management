@@ -1,0 +1,89 @@
+
+{% load static %}
+
+
+{% block title %}Admin - Student{% endblock %}
+
+{% block content %}
+<center>
+<h2>Student Edit page</h2>
+<form method="POST" action="http://127.0.0.1:8000/college-admin/update-student/{{editdata.account_id}}/">   
+    {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+    <table border=1 align="center"> 
+    
+    
+        <tr>
+            <th>First-Name</th>
+            <td><input type="text" name="firstName" value="{{editdata.firstName}}" ></td>
+        </tr>
+        <tr>
+            <th>Middle-Name</th>
+            <td><input type="text" name="middleName" value="{{editdata.middleName}}"></td>
+        </tr>
+
+        <tr>
+            <th>Last-Name</th>
+            <td><input type="text" name="lastName" value="{{editdata.lastName}}" ></td>
+        </tr>
+
+        <tr>
+            <th>User-Name</th>
+            <td><input type="text" name="username" value="{{editdata.username}}" readonly></td>
+        </tr>
+
+        <tr>
+            <th>Account_id</th>
+            <td><input type="text" name="account_id" value="{{editdata.account_id}}" readonly></td>
+        </tr>
+
+        <tr>
+            <th>Enrollment-No</th>
+            <td><input type="text" name="enrolment" value="{{editdata.enrolment}}" ></td>
+        </tr>
+
+        <tr>
+            <th>Mobile</th>
+            <td><input type="text" name="mobile" value="{{editdata.mobile}}" ></td>
+        </tr>
+       
+        <tr>
+            <th>Branch</th>
+            <td><input type="text" name="branch" value="{{editdata.branch}}" ></td>
+        </tr>
+
+        <tr>
+            <th>Sem</th>
+            <td><input type="text" name="sem" value="{{editdata.sem}}" ></td>
+        </tr>
+        
+        <tr>
+            <th>Email</th>
+            <td><input type="text" name="email" value="{{editdata.email}}" ></td>
+        </tr>
+
+        <tr>
+            <th>Gender</th>
+            <td><input type="text" name="gender" value="{{editdata.gender}}"></td>
+        </tr>
+
+        <tr>
+            <th>Request</th>
+            <td><input type="text" name="isPending" value="{{editdata.isPending}}"></td>
+        
+        </tr>
+</table>
+<input type="submit" value="Update"/>
+<input type="button" value="Cancel"  onclick="location.href='http://127.0.0.1:8000/college-admin/student-account-pending-details'">
+<input type="button" value="Back"  onclick="location.href='http://127.0.0.1:8000/college-admin/students'">
+{% if messages %}
+{% for j in messages %}
+<h2>{{j}}</h2>
+{% endfor %}
+{% endif %}
+</form> 
+</center>
+
+
+{% endblock %}
