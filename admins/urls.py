@@ -9,7 +9,8 @@ urlpatterns = [
     path('courses/', admins_courses_view, name="courses"),
     path('profile/', admins_profile_view, name="profile"),
 
-    #student
+    path('logout/',logout_view, name='logout'),
+
     path('student-account-pending-details/',admins_student_pending_detail_view,name='studentsdetails'),
     path('student-account-approved-details/',admins_student_approved_detail_view,name='studentsdetails2'),
 

@@ -67,13 +67,44 @@ body{
     background-color: rgb(19, 15, 235);
 }
 
+#welcome-msg {
+    
+    width: auto;
+    margin: 2px 1% 5px 2%;
+}
+
+#welcome-msg #welcome-content{
+    display: flex;
+    width: auto;
+    background-color: white;
+    margin-top: 1%;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
+    justify-content: space-between;
+}
+
+#welcome-msg #welcome-user{
+    display: flex;
+    margin-left: 2%;
+}
+
+#welcome-msg #timestamp{
+    display: flex;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 2%;
+    
+}
+
 .navbar a.active:hover {
     color: white;  
     background-color: rgb(12, 10, 102);
 }
 
 .main {
-  margin-top: 90px; 
+  margin-top: 50px; 
   padding-top: 2%;
 }
   
@@ -254,9 +285,8 @@ label{
 }
 
 .announcements {
-    border: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
-    border-style: solid;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 3px;
     border-width: 1px;
     height: auto;
@@ -273,10 +303,9 @@ label{
     float: left;
     border: rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
-    border-style: solid;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 3px;
-    border-width: 1px;
-    margin-left: 35px;
+    margin-left: 2%;
     margin-right: 1%;
     width: 22.5%;
     box-sizing: border-box;

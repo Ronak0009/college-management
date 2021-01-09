@@ -19,6 +19,11 @@ class Staff(models.Model):
                     ('Assistant Professor','Assistant Professor'),
                     ('Lab Instructor', 'Lab Instructor'),
                     ('Lab Assistant','Lab Assistant'))
+               
+     categories = (('Faculty','Faculty'),
+                ('Staff','Staff'),
+                ('Admin','Admin'),
+                ('Head of Department','Head of Department'))
 
      firstName = models.CharField(max_length=70,
                      default='',
@@ -63,10 +68,16 @@ class Staff(models.Model):
                     verbose_name="Designation",
                     choices=designation_choices)
 
+     category = models.CharField(max_length=70,
+                    verbose_name="Category",
+                    default='Faculty',
+                    choices=categories)
+
      isAdmin=models.BooleanField(max_length=10,
                     default=False)
      
      isPending = models.BooleanField(max_length=10,
-                    default=True)
+                    default=True,
+                    )
      
 
