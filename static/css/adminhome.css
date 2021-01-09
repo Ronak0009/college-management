@@ -137,10 +137,20 @@ input {
 }
 
 /* new for student*/
-.newsearch input[type=text]{
-    width:40%;
+#searchtxt{
+    width:15%;
     margin-left: 15px;
 }  
+#stdbranch{
+    width: 15%;
+    display: inline-block;
+}
+#stdsem{
+    width:15%;
+    display: inline-block;
+}
+
+/* for student page*/
 .newsearch input:hover{
     background: #ddd;
     color: black;
@@ -149,6 +159,18 @@ input {
         background-color: rgb(241, 241, 241);
     }
 
+    /* for staff page*/
+.newstaffsearch input:hover{
+    background: #ddd;
+    color: black;
+}
+.newstaffsearch input:focus{
+        background-color: rgb(241, 241, 241);
+    }     
+#staffsearch{
+        width:15%;
+        margin-left: 15px;
+    } 
 #pending{
     width:14%;
     display: inline-block;
@@ -163,7 +185,19 @@ input {
     background: #ddd;
     color: black;
 }
-
+#approved{
+    width:14%;
+    display: inline-block;
+    font-size:16px;
+    text-align: center;
+    height: 6%;
+    background-color:white;
+    margin-left: 12px;
+}
+#approved:hover{
+    background: #ddd;
+    color: black;
+}
 
 /*for staff*/
 .searchstaff input:hover{
@@ -280,7 +314,6 @@ label{
 
 /*for staff*/
 .datasection_staff{
-    float: left;;
     background-color: rgb(255, 255, 255);;
     border: rgb(255, 255, 255);
     width: auto;
@@ -288,25 +321,12 @@ label{
     min-height: 655px;
     padding-bottom: 20px;
     height: auto;
-    width:65%;
     margin-left: 15px;
     margin-right: 1%;
     border-radius: 3px;
     box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
 }
-.pendingacc_staff{
-    border: rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
-    border-style: solid;
-    border-radius: 3px;
-    border-width: 1px;
-    width: 25.5%;
-    box-sizing: border-box;
-    padding-bottom: 20px;
-    overflow: hidden;
-    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
-    
-}
+
 #staff_list1{
     width: 100%;
 }
@@ -393,6 +413,21 @@ input[type=button]{
   margin-left: 5%;
   position: relative;
   font-size: 18px;
+  display:inline-block
+  
+}
+.profile_btn a{
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: blue;
+    padding: 10px;
+    display: inline;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
 }
 
 

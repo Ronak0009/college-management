@@ -12,40 +12,44 @@
 
 <div class="Admin_profile">
     <table  id="adminprofile">
+      {% for i in admin %}
         <tr>
           <td>Name:</td>
-          <td></td>
+          <td>{{i.firstName}}  {{i.lastName}}</td>
           <td rowspan="3"> Image</td>
         </tr>
         <tr>
           <td>Gender:</td>
-          <td ></td>
+          <td>{{i.gender}}</td>
+        </tr>
+         <tr>
+          <td>Phone No:</td>
+          <td>{{i.mobile}}</td>
+        </tr>
+         <tr>
+          <td>Email:</td>
+          <td>{{i.email}}</td>
+        </tr>
+         <tr>
+          <td>Branch:</td>
+          <td>{{i.branch}}</td>
+        </tr>
+         <tr>
+          <td>Role:</td>
+          <td>{{i.designation}}</td>
         </tr>
         <tr>
-          <td >Birth Date:</td>
-          <td ></td>
+          <td>Account_id:</td>
+          <td>{{i.account_id}}</td>
         </tr>
-         <tr>
-          <td >Phone No:</td>
-          <td ></td>
-        </tr>
-         <tr>
-          <td >Email:</td>
-          <td ></td>
-        </tr>
-         <tr>
-          <td >Branch:</td>
-          <td ></td>
-        </tr>
-         <tr>
-          <td >Role:</td>
-          <td></td>
-        </tr>
+
       </table>
+      {% endfor %}
+      {%for i in admin %}
       <div class="profile_btn">
-        <input type="button" value="Edit Profile" id="Edit_btn" >
+        <input type="button" value="Edit Profile" id="Edit_btn" onclick="location.href='http://127.0.01:8000/college-admin/edit-profile/{{i.account_id}}'" >
         <input type="button" value="Change Admin" id="Change_btn"></div>
-      
+      {% endfor %}
 </div>
 </body>
 

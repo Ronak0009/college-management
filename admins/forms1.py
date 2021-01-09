@@ -1,19 +1,17 @@
 from django import forms
-from students.models import Student
+from staff.models import Staff
 
-class editforms(forms.ModelForm):
+class editforms1(forms.ModelForm):
     class Meta:
-        model=Student
+        model=Staff
         fields= [
             'firstName',
             'middleName',
             'lastName',
             'username',
             'account_id',
-            'enrolment',
             'mobile',
             'branch',
-            'sem',
             'email',
             'gender',
             'isPending',
