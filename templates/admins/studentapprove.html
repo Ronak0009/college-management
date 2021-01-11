@@ -1,75 +1,76 @@
-
+{% extends './base.html' %}
 {% load static %}
 
 
 {% block title %}Admin - Student{% endblock %}
 
 {% block content %}
+<div class="student-approve">
 <center>
-<h2> Student Approve page</h2>
+<h2> Student Approve </h2>
 <form method="POST" action="http://127.0.0.1:8000/college-admin/approved-student/{{editdata.account_id}}/">   
     {% csrf_token %}
     {{ form.errors }}
     {{ form.non_field_errors }}
-    <table border=1 align="center"> 
+    <table class="student-approvelist" align="center"> 
     
     
         <tr>
-            <th>First-Name</th>
+            <th>First-Name:</th>
             <td><input type="text" name="firstName" value="{{editdata.firstName}}" readonly></td>
         </tr>
         <tr>
-            <th>Middle-Name</th>
+            <th>Middle-Name:</th>
             <td><input type="text" name="middleName" value="{{editdata.middleName}}" readonly></td>
         </tr>
 
         <tr>
-            <th>Last-Name</th>
+            <th>Last-Name:</th>
             <td><input type="text" name="lastName" value="{{editdata.lastName}}" readonly></td>
         </tr>
 
         <tr>
-            <th>User-Name</th>
+            <th>User-Name:</th>
             <td><input type="text" name="username" value="{{editdata.username}}" readonly></td>
         </tr>
 
         <tr>
-            <th>Account_id</th>
+            <th>Account_id:</th>
             <td><input type="text" name="account_id" value="{{editdata.account_id}}" readonly></td>
         </tr>
 
         <tr>
-            <th>Enrollment-No</th>
+            <th>Enrollment-No:</th>
             <td><input type="text" name="enrolment" value="{{editdata.enrolment}}" readonly></td>
         </tr>
 
         <tr>
-            <th>Mobile</th>
+            <th>Mobile:</th>
             <td><input type="text" name="mobile" value="{{editdata.mobile}}" readonly></td>
         </tr>
        
         <tr>
-            <th>Branch</th>
+            <th>Branch:</th>
             <td><input type="text" name="branch" value="{{editdata.branch}}" readonly></td>
         </tr>
 
         <tr>
-            <th>Sem</th>
+            <th>Sem:</th>
             <td><input type="text" name="sem" value="{{editdata.sem}}" readonly></td>
         </tr>
         
         <tr>
-            <th>Email</th>
+            <th>Email:</th>
             <td><input type="text" name="email" value="{{editdata.email}}" readonly></td>
         </tr>
 
         <tr>
-            <th>Gender</th>
+            <th>Gender:</th>
             <td><input type="text" name="gender" value="{{editdata.gender}}" readonly></td>
         </tr>
 
         <tr>
-            <th>Request</th>
+            <th>Request:</th>
             <td><input type="text" name="isPending" value="False" readonly></td>
         
         </tr>
@@ -85,5 +86,5 @@
 </form> 
 </center>
 
-
+</div>
 {% endblock %}

@@ -14,7 +14,7 @@ from common.forms import LoginForm
 
 
 # Create your views here.
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def admins_home_view(request, *args, **kwargs):
     time = datetime.now()
     currentTime = time.strftime("%D %I:%M:%S %p")
@@ -23,19 +23,19 @@ def admins_home_view(request, *args, **kwargs):
     }
     return render(request, "admins/home.html",context)
 
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def admins_courses_view(request, *args, **kwargs):
     return render(request, "admins/courses.html")
 
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def admins_students_view(request, *args, **kwargs):
     return render(request, "admins/students.html")
 
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def admins_staff_view(request, *args, **kwargs):
     return render(request, "admins/staff.html")
 
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 # admin profile edit
 def admins_profile_view(request, *args, **kwargs):
     obj=Staff.objects.filter(isAdmin=True)
@@ -64,7 +64,7 @@ def edit_profile(request,account_id):
     print(form.errors)
 
 # for data extraction for student
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def admins_student_pending_detail_view(request,*args,**kwargs):
     obj=Student.objects.filter(isPending=True)
     print(obj)
@@ -100,11 +100,11 @@ def approve_student(request,account_id):
 
 #edit page will be called for unapproved details of students
 
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def admins_student_detail_view(request,*args,**kwargs):
     return render(request,"admins/students.html")
   
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def admins_student_edit(request,account_id):
     print(account_id)
     displaydata=Student.objects.get(account_id=account_id)
@@ -112,7 +112,7 @@ def admins_student_edit(request,account_id):
     return render(request,'admins/studentedit.html',{'editdata':displaydata})
 
 #to edit unapproved students
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def edit_student(request,account_id):
     updatedata=Student.objects.get(account_id=account_id)
     print(account_id)
@@ -185,7 +185,7 @@ def edit_staff(request,account_id):
             return HttpResponse(messages)
     print(form.errors)
 
-@login_required(login_url=common.views.login_view)
+#@login_required(login_url=common.views.login_view)
 def logout_view(request, *args, **kwargs):
     logout(request)
     # form = LoginForm(request.post or None)
@@ -196,5 +196,5 @@ def logout_view(request, *args, **kwargs):
 
 
    
-    
+
     
