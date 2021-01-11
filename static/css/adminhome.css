@@ -459,4 +459,387 @@ input[type=button]{
     line-height: 25px;
 }
 
+/* Student eidt css*/
+.student-edit{
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: 20%t;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.student-edit h2{
+font-size: 30px;
+text-align: center;
+margin-top: 2%;
+}
+
+.student-edit[type=text]{
+        width: 80%;
+        padding: 6px 10px;
+        margin: 8px 0;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -ms-box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        -webkit-box-sizing:content-box; 
+        box-sizing:content-box;
+        font-family: Arial, Helvetica, sans-serif;
+    
+}
+.student-editlist tr td{
+   width:75%;
+}
+.student-editlist th{
+    margin-top: 15%;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.student-edit [type=submit]{
+border-radius: 4px;
+background-color: rgb(19, 15, 235);
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 18px;
+padding: 15px;
+width: 30%;
+height: auto;
+cursor: pointer;
+margin: 5px;
+}
+.student-edit [type=button]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+/*studet -approve css*/
+
+.student-approve{
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: 20%t;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.student-approve h2{
+font-size: 30px;
+text-align: center;
+margin-top: 2%;
+}
+
+.student-approve[type=text]{
+        width: 80%;
+        padding: 6px 10px;
+        margin: 8px 0;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -ms-box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        -webkit-box-sizing:content-box; 
+        box-sizing:content-box;
+        font-family: Arial, Helvetica, sans-serif;
+    
+}
+.student-approvelist tr td{
+   width:75%;
+}
+.student-approvelist th{
+    margin-top: 15%;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.student-approve [type=submit]{
+border-radius: 4px;
+background-color: rgb(19, 15, 235);
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 18px;
+padding: 15px;
+width: 30%;
+height: auto;
+cursor: pointer;
+margin: 5px;
+}
+.student-approve [type=button]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+/* staff edit css*/    
+
+.staff-edit{
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: 20%t;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.staff-edit h2{
+font-size: 30px;
+text-align: center;
+margin-top: 2%;
+}
+
+.staff-edit[type=text]{
+        width: 80%;
+        padding: 6px 10px;
+        margin: 8px 0;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -ms-box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        -webkit-box-sizing:content-box; 
+        box-sizing:content-box;
+        font-family: Arial, Helvetica, sans-serif;
+    
+}
+.staff-editlist tr td{
+   width:75%;
+}
+.staff-editlist th{
+    margin-top: 15%;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.staff-edit [type=submit]{
+border-radius: 4px;
+background-color: rgb(19, 15, 235);
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 18px;
+padding: 15px;
+width: 30%;
+height: auto;
+cursor: pointer;
+margin: 5px;
+}
+.staff-edit [type=button]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+/* staff approve*/
+
+.staff-approve{
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: 20%t;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.staff-approve h2{
+font-size: 30px;
+text-align: center;
+margin-top: 2%;
+}
+
+.staff-approve[type=text]{
+        width: 80%;
+        padding: 6px 10px;
+        margin: 8px 0;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -ms-box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        -webkit-box-sizing:content-box; 
+        box-sizing:content-box;
+        font-family: Arial, Helvetica, sans-serif;
+    
+}
+.staff-approvelist tr td{
+   width:75%;
+}
+.staff-approvelist th{
+    margin-top: 15%;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.staff-approve [type=submit]{
+border-radius: 4px;
+background-color: rgb(19, 15, 235);
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 18px;
+padding: 15px;
+width: 30%;
+height: auto;
+cursor: pointer;
+margin: 5px;
+}
+.staff-approve [type=button]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+    }
+
+/* profile edit css */    
+
+.profile-edit{
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: 20%t;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-edit h2{
+font-size: 30px;
+text-align: center;
+margin-top: 2%;
+}
+
+.profile-edit[type=text]{
+        width: 80%;
+        padding: 6px 10px;
+        margin: 8px 0;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -ms-box-sizing:content-box;
+        -moz-box-sizing:content-box;
+        -webkit-box-sizing:content-box; 
+        box-sizing:content-box;
+        font-family: Arial, Helvetica, sans-serif;
+    
+}
+.admin-profilelist tr td{
+   width:75%;
+}
+.admin-profilelist th{
+    margin-top: 15%;
+    font-size: 18px;
+    display: inline-block;
+}
+
+.profile-edit [type=submit]{
+border-radius: 4px;
+background-color: rgb(19, 15, 235);
+border: none;
+color: #FFFFFF;
+text-align: center;
+font-size: 18px;
+padding: 15px;
+width: 30%;
+height: auto;
+cursor: pointer;
+margin: 5px;
+}
+.profile-edit [type=button]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+    }
 
