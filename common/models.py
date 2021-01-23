@@ -1,4 +1,21 @@
 from django.db import models
+from datetime import datetime    
+
+
+
+class Announcement(models.Model):
+    title=models.CharField(max_length=100,
+                            default='',
+                            verbose_name="Title")
+    description=models.CharField(max_length=100,
+                            default='',
+                            verbose_name="Decription")
+    account_id = models.CharField(max_length=20,
+                            verbose_name="Account Id", default='')
+    date = models.DateTimeField(default=datetime.now, blank=True)
+
+
+
 
 # Create your models here.
 # class AppUser(models.Model):
