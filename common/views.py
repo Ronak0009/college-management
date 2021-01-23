@@ -13,6 +13,8 @@ from .methods import id_generator
 
 # Create your views here.
 
+
+
 def login_view(request, *args, **kwargs):
     if request.method == 'POST':
         form = LoginForm(request.POST or None)

@@ -11,6 +11,18 @@ urlpatterns = [
 
     path('logout/',logout_view, name='logout'),
 
+    path('announcement/',admin_announcement,name='adminannoucement'),
+    path('announcement-done/',announcement_done,name='annoucementdone'),
+    
+    path('all-announcement/',admin_add_announcement,name='adminannoucement'),
+    
+    #path('home/', admins_home_announcement, name="home"),
+
+    path('edit-announcement/<int:account_id>',admins_announcement_edit,name='announcemenedit'),
+    path('update-announcement/<int:account_id>/',edit_announcement,name='announcementupdate'),
+
+
+
     path('student-account-pending-details/',admins_student_pending_detail_view,name='studentsdetails'),
     path('student-account-approved-details/',admins_student_approved_detail_view,name='studentsdetails2'),
 

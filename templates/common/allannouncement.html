@@ -1,0 +1,40 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Announcement{% endblock %}
+
+{% block content %}
+<div class ="allannouncement">
+    <h2>All Announcement</h2>
+    <hr>
+<form  method="POST" > {% csrf_token %}
+    
+</div>
+</form>
+<div class="announcement_section">
+    <table id="announcement_list2" border="1">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+
+    {% for i in announcementform1 %}
+        <tr>
+            <td>{{i.title}}</td>
+            <td>{{i.description}}</td>
+            <td> <a href="http://127.0.01:8000/college-admin/edit-announcement/{{i.account_id}}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</br>
+<div class="announcement_footer">
+    <hr>
+        Purvesh Gandhi & Ronak Kanthariya
+</div>
+
+
+
+
+{% endblock %}  

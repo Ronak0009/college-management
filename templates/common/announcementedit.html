@@ -1,0 +1,41 @@
+{% extends './base.html' %}
+{% load static %}
+
+
+{% block title %}Admin - Announcement{% endblock %}
+
+{% block content %}
+<center>
+<div class="announcement-edit">    
+<h2>Announcement Edit</h2>
+<form method="POST" action="http://127.0.0.1:8000/college-admin/update-announcement/{{editdata.account_id}}/">   
+    {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
+    <table align="center" class="announcement-editlist"> 
+        <tr>
+            <th>Title:</th>
+            <td><input type="text" name="title" value="{{editdata.title}}" ></td>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td><input type="text" name="description" value="{{editdata.description}}"></td>
+        </tr>
+        <tr>
+            <th>Account_Id:</th>
+            <td><input type="text" name="account_id" value="{{editdata.account_id}}" readonly></td>
+        </tr>
+</table>
+<input type="submit" value="Update"/>
+<input type="button" value="Cancel"  onclick="location.href='http://127.0.0.1:8000/college-admin/all-announcement'">
+<input type="button" value="Back"  onclick="location.href='http://127.0.0.1:8000/college-admin/announcement'">
+{% if messages %}
+{% for j in messages %}
+<h2>{{j}}</h2>
+{% endfor %}
+{% endif %}
+</form> 
+</center>
+</div>
+
+{% endblock %}
