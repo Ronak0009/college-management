@@ -13,6 +13,8 @@ from .methods import id_generator
 
 # Create your views here.
 
+
+
 def login_view(request, *args, **kwargs):
     next_url = request.POST.get('next')
     if request.method == 'POST':

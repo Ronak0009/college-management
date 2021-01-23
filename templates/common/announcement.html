@@ -1,0 +1,49 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Announcement{% endblock %}
+
+{% block content %}
+<div class ="announcementform">
+    <h2>Announcement</h2>
+    <hr>
+<form  method="POST" > {% csrf_token %}
+    <table class="announcement_list1">
+        {% for field in announcementform1 %}
+        <tr>
+        <td class="announcement_label" style="vertical-align: top;">
+            {{ field.label }}
+        </td>
+        <td class="announcement_field" style="vertical-align: top;">
+            {{ field }}
+            <p> {{ field.errors }} </p>
+            </td>
+    </tr>
+
+        {% endfor %}
+    </table>
+                <input type="submit" value="Add"/>
+           
+                <input type="button" value="Show"  onclick="location.href='http://127.0.0.1:8000/college-admin/all-announcement'"/>
+            
+                <input type="button" value="Cancel" onclick="location.href='http://127.0.0.1:8000/college-admin/home'"/>
+         
+                {% if messages %}
+                {% for j in messages %}
+                <h2>{{j}}</h2>
+                {% endfor %}
+                {% endif %}               
+</div>
+
+</form>
+
+</br>
+<div class="announcement_footer">
+    <hr>
+        Purvesh Gandhi & Ronak Kanthariya
+</div>
+
+
+
+
+{% endblock %}  

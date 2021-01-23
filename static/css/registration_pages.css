@@ -199,3 +199,185 @@ body{
     box-shadow: 0px 0px 3px 0px rgba(50, 50, 50, 0.30);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* announcement */
+.announcementform{
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: max-content;
+    margin-top: 3%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.announcementform input[type=submit]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+  
+}
+.announcementform input[type=button]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+}
+.announcement_label{
+   height: 10%;
+
+}
+.announcement_field{
+    font-size: 18px;
+   margin-left: 50%;
+}
+
+.announcement_section{
+    background-color: rgb(255, 255, 255);;
+    border: rgb(255, 255, 255);
+    width: auto;
+    overflow: hidden;
+    min-height: 655px;
+    padding-bottom: 20px;
+    height: auto;
+    margin-left: 15px;
+    margin-right: 1%;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
+}
+.announcement_list1{
+    font-size: 18px;
+    margin-left: 10px;
+}
+.announcement_field{
+    font-size: 18px;
+}
+#announcement_list2{
+    width: 100%;
+    font-size: 18px;
+}
+#announcement_list2 tr td{
+    text-align: center;
+}
+.allannouncement{
+    margin-left: 2%;
+}
+
+.announcement-edit{
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: 20%t;
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.announcement-editlist tr td{
+    width:75%;
+    font-size: 20px;
+ }
+ 
+ .announcement-editlist th{
+     margin-top: 15%;
+     font-size: 20px;
+     display: inline-block;
+ }
+ .announcement-edit h2{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 2%;
+    }
+ .announcement-edit [type=text]{
+    width: 80%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -ms-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box; 
+    box-sizing:content-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+ .announcement-edit [type=submit]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+    }
+.announcement-edit [type=button]{
+        border-radius: 4px;
+        background-color: rgb(19, 15, 235);
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 18px;
+        padding: 15px;
+        width: 30%;
+        height: auto;
+        cursor: pointer;
+        margin: 5px;
+        }
+.announcement_footer{
+    float:inline-end;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    font-size:18x;
+    color: black;
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 15px;
+    border-top: 1px solid;
+    color: rgb(34, 33, 33);
+}
+.announcement_footer hr{
+    color:black;
+    background-color:black;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+    text-align: center;
+}
