@@ -14,6 +14,7 @@ from .methods import id_generator
 # Create your views here.
 
 def login_view(request, *args, **kwargs):
+    next_url = request.POST.get('next')
     if request.method == 'POST':
         form = LoginForm(request.POST or None)
         if form.is_valid():
@@ -55,6 +56,10 @@ def login_view(request, *args, **kwargs):
                     request.session['category'] = category
                     login(request,user)
                     if category == 'Admin':
+
+                        if next_url:
+                            return redirect(next_url)
+                            
                         return redirect("../college-admin/home")
                     elif category in ['Faculty', 'Staff', 'Head of Department']:
                         return redirect("../staff/home")

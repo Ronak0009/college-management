@@ -35,6 +35,8 @@
                                 {{ form.passwd.errors }}
                             </div>
                         </div>
+                        
+                        <input type="hidden" name="next" value="{{ request.GET.next }}"/>
                         <input type="submit" value="Login" id="btn" style="margin-top: 15px;"/>
                     </form>
                     <p style="text-align: center;">New User?</p>

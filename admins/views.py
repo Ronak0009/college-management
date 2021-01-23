@@ -163,7 +163,6 @@ def approve_staff(request,account_id):
             return HttpResponse(messages)
     print(form.errors)
 
-
 def admins_staff_edit(request,account_id):
     print(account_id)
     displaydata=Staff.objects.get(account_id=account_id)
