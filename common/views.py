@@ -206,6 +206,7 @@ def staff_registration(request,*args,**kwargs):
             new_fName = details['firstName']
             new_mName = details['middleName']
             new_lName = details['lastName']
+            new_empId = details['employeeId']
             new_passwd = details['passwd']
             new_email = details['email']
             new_dob = details['date']
@@ -256,6 +257,7 @@ def staff_registration(request,*args,**kwargs):
                         middleName=str(new_mName.capitalize()),
                         lastName=str(new_lName.capitalize()),
                         username=str(new_username),
+                        employee_id=str(new_empId),
                         passwd=str(new_passwd),
                         account_id=str(new_account_id),
                         date=str(new_dob),

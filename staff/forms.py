@@ -2,6 +2,7 @@ from django import forms
 from students.models import Student
 from django.contrib.auth.password_validation import validate_password
 from staff.models import Staff
+from admins.models import Branch
 from django.utils.safestring import mark_safe
 import re
 import pandas as pd
@@ -11,7 +12,15 @@ class StaffForm(forms.ModelForm):
 
     designation_choices=Staff.designation_choices
 
-    branch_choices= Staff.branch_choices
+    # branch_choices= Staff.branch_choices
+    branches = Branch.objects.values_list('branch_name')
+    # branch_choices = []
+    # for i in branches:
+    #     branch_choices.append((i[0],i[0]))
+    branch_choices = ((branch[0],branch[0]) for branch in branches)
+    # branch_choices = tuple(branch_choices)
+    print(branch_choices)
+
   
     firstName = forms.CharField(label='First Name:',
                 widget=forms.TextInput(attrs={"placeholder":"Your first name",
@@ -29,6 +38,10 @@ class StaffForm(forms.ModelForm):
                 widget=forms.TextInput(attrs={"placeholder":"Your Username",
                                              "size":"40",
                                              "class":"text"}))
+    employeeId = forms.CharField(label='Employee Id:',min_length=8,max_length=30, 
+                widget=forms.TextInput(attrs={"placeholder":"Your employee id",
+                                            "size":"30",
+                                            "class":"text"}))
     passwd = forms.CharField(label='Password:', min_length=8, max_length=40,
                 widget=forms.PasswordInput(attrs={"placeholder":"Create a password",
                                              "size":"40",
@@ -52,6 +65,10 @@ class StaffForm(forms.ModelForm):
     branch=forms.ChoiceField(label="Branch:",choices=branch_choices,
                          widget=forms.Select(attrs={
                              "class":"choice3",})) 
+    
+    # branch = forms.ModelChoiceField(label="Branch:",queryset=Student.objects.values_list('firstName',flat=True),
+    #                         widget=forms.Select(attrs={
+    #                          "class":"choice3",})) 
                           
     date = forms.DateField(label="Date of Birth:",
                 widget=forms.TextInput(attrs={
@@ -71,6 +88,7 @@ class StaffForm(forms.ModelForm):
             'middleName',
             'lastName',
             'username',
+            'employeeId',
             'date',
             'gender',
             'passwd',
@@ -90,6 +108,7 @@ class StaffForm(forms.ModelForm):
         confirm_passwd = str(self.cleaned_data.get("confirm_passwd"))
         date = str(self.cleaned_data.get("date"))
         username = str(self.cleaned_data.get("username"))
+        employee_id = str(self.cleaned_data.get("employeeId"))
         mobile = str(self.cleaned_data.get("mobile"))
         email = str(self.cleaned_data.get("email"))
         branch = str(self.cleaned_data.get("branch"))
@@ -122,6 +141,26 @@ class StaffForm(forms.ModelForm):
                 pass
         except forms.ValidationError as e:
             self.add_error('lastName', e)
+
+        #validates employee id
+        try:
+            patt = re.match("^(?P<code>[0-9]{2})(?P<year>[0-9]{2})([0-9]{6})$", employee_id)
+            if not patt:
+                id_error = "Not a valid id"
+                raise forms.ValidationError(id_error)
+            else:
+                branch_id = patt.group('code')
+                corrBranch = Branch.objects.filter(code=branch_id)
+                if corrBranch:
+                    corrBranchName = corrBranch[0].branch_name
+                    if corrBranchName != branch:
+                        id_error = "Id does not belong to selected branch"
+                        raise forms.ValidationError(id_error)
+                else:
+                    id_error = "Not a valid id"
+                    raise forms.ValidationError(id_error)
+        except forms.ValidationError as e:
+            self.add_error('employeeId',e)
 
         # validates date of birth
         try:

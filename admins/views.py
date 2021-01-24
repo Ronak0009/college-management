@@ -94,7 +94,7 @@ def edit_announcement(request,account_id):
 def admins_home_view(request, *args, **kwargs):
    
     time = datetime.now()
-    currentTime = time.strftime("%D %I:%M:%S %p")
+    currentTime = time.strftime("%d/%m/%Y %I:%M %p")
     context = {
         'timestamp': currentTime,
         

@@ -15,8 +15,6 @@ class Announcement(models.Model):
     date = models.DateTimeField(default=datetime.now, blank=True)
 
 
-
-
 # Create your models here.
 # class AppUser(models.Model):
 #     categories = (('Student', 'Student'),

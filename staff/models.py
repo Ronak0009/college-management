@@ -1,18 +1,22 @@
 from django.db import models
+from admins.models import Branch
 
 class Staff(models.Model):
      gender_choices=(('M','Male'),('F','Female'),('O','Other'),)
-     branch_choices=(('Computer Engineering','Computer Engineering'),
-                       ('Information Technology','Information Technology'),
-                       ('Electronics and Comm. Engineering','Electronics and Comm. Engineering'),
-                       ('Bio-Medical Engineering','Bio-Medical Engineering'),
-                       ('Mechantronics Engineering','Mechantronics Engineering'),
-                       ('Mechanical Engineering','Mechanical Engineering'),
-                       ('Civil Engineering','Civil Engineering'),
-                       ('Electrical Engineering','Electrical Engineering'),
-                       ('Marine Engineering','Marine Engineering'),
-                       ('Automobile Engineering','Automobile Engineering'),
-                       ('Petrochemical Engineering','Petrochemical Engineering'))  
+     # branch_choices=(('Computer Engineering','Computer Engineering'),
+     #                   ('Information Technology','Information Technology'),
+     #                   ('Electronics and Comm. Engineering','Electronics and Comm. Engineering'),
+     #                   ('Bio-Medical Engineering','Bio-Medical Engineering'),
+     #                   ('Mechantronics Engineering','Mechantronics Engineering'),
+     #                   ('Mechanical Engineering','Mechanical Engineering'),
+     #                   ('Civil Engineering','Civil Engineering'),
+     #                   ('Electrical Engineering','Electrical Engineering'),
+     #                   ('Marine Engineering','Marine Engineering'),
+     #                   ('Automobile Engineering','Automobile Engineering'),
+     #                   ('Petrochemical Engineering','Petrochemical Engineering'))  
+
+     branches = Branch.objects.values_list('branch_name')
+     branch_choices = ((branch[0],branch[0]) for branch in branches)
 
      designation_choices=(('Head of Department','Head of Department'),
                     ('Professor','Professor'),
@@ -44,6 +48,9 @@ class Staff(models.Model):
      passwd = models.CharField(max_length=70,
                     verbose_name="Password")
      
+     employee_id = models.CharField(max_length=70,
+                    verbose_name='Employee Id', unique=True)
+
      account_id = models.CharField(max_length=20,
                     verbose_name="Account Id", default='', primary_key=True)
 
@@ -54,8 +61,7 @@ class Staff(models.Model):
                verbose_name="Mobile Number")
 
      branch = models.CharField(max_length=70,
-                    verbose_name="Branch",
-                    choices=branch_choices)
+                    verbose_name="Branch", choices=branch_choices)
 
      email = models.EmailField(max_length=70,
                     verbose_name="Email")
