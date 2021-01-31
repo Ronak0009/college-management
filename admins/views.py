@@ -9,12 +9,13 @@ from django.contrib.auth.decorators import login_required
 import common
 from staff.models import Staff
 from  . import forms
+from .models import Branch
 from datetime import datetime
 from common.forms import LoginForm
 
 from common.methods import id_generator
 from common.announcementform import announcementform
-from common.models import Announcement
+from common.models import Announcement, Course
 from admins.forms2 import editforms2
 
 
@@ -118,14 +119,30 @@ def admins_home_view(request, *args, **kwargs):
     currentTime = time.strftime("%d/%m/%Y %I:%M %p")
     context = {
         'timestamp': currentTime,
-        
     }
     return render(request, "admins/home.html",context)
 
 
 #@login_required(login_url=common.views.login_view)
 def admins_courses_view(request, *args, **kwargs):
-    return render(request, "admins/courses.html")
+    branches = Branch.objects.all().order_by('branch_name')
+    branch_info = {}
+    for branch in branches:
+        branch_info[branch.branch_name] = {}
+        branch_info[branch.branch_name]["staff"] = len(Staff.objects.filter(branch=branch.branch_name, isPending=False))
+        hod = Staff.objects.filter(designation="Head Of Department", branch=branch.branch_name, isPending=False)
+
+        if hod:
+            branch_info[branch.branch_name]["hod"] = hod[0].firstName + " " + hod[0].lastName
+        else:
+            branch_info[branch.branch_name]["hod"] = "Unspecified"
+        courses = Course.objects.filter(branch=branch.branch_name)
+        branch_info[branch.branch_name]["number"] = len(courses)
+    context = {
+        'branches' : branches,
+        'branch_info': branch_info,
+    }
+    return render(request, "admins/courses.html", context)
 
 #@login_required(login_url=common.views.login_view)
 def admins_students_view(request, *args, **kwargs):
