@@ -12,14 +12,14 @@ urlpatterns = [
     path('logout/',logout_view, name='logout'),
 
     path('announcement/',admin_announcement,name='adminannoucement'),
-    path('announcement-done/',announcement_done,name='annoucementdone'),
+    #path('announcement-done/',announcement_done,name='annoucementdone'),
     
     path('all-announcement/',admin_add_announcement,name='adminannoucement'),
     
     #path('home/', admins_home_announcement, name="home"),
 
     path('edit-announcement/<int:account_id>',admins_announcement_edit,name='announcemenedit'),
-    path('update-announcement/<int:account_id>/',edit_announcement,name='announcementupdate'),
+    #path('update-announcement/<int:account_id>/',edit_announcement,name='announcementupdate'),
 
 
 
@@ -28,10 +28,10 @@ urlpatterns = [
 
     #for edit
     path('approve-student/<int:account_id>',admins_student_approve,name='studentapprove'),
-    path('approved-student/<int:account_id>/',approve_student,name='studentapproved'),
+    #path('approved-student/<int:account_id>/',approve_student,name='studentapproved'),
 
     path('edit-student/<int:account_id>',admins_student_edit,name='studentedit'),
-    path('update-student/<int:account_id>/',edit_student,name='studentupdate'),
+    #path('update-student/<int:account_id>/',edit_student,name='studentupdate'),
 
 
     #for staff
@@ -40,15 +40,15 @@ urlpatterns = [
 
     #for edit
     path('approve-staff/<int:account_id>',admins_staff_approve,name='staffapprove'),
-    path('approved-staff/<int:account_id>/',approve_staff,name='staffapproved'),
+    #path('approved-staff/<int:account_id>/',approve_staff,name='staffapproved'),
 
     path('edit-staff/<int:account_id>',admins_staff_edit,name='staffedit'),
-    path('update-staff/<int:account_id>/',edit_staff,name='staffupdate'),
+    #path('update-staff/<int:account_id>/',edit_staff,name='staffupdate'),
 
 
     # for admin profile edit
     path('edit-profile/<int:account_id>',admins_profile_edit,name='adminedit'),
-    path('update-profile/<int:account_id>/',edit_profile,name='adminupdate'),
+    #path('update-profile/<int:account_id>/',edit_profile,name='adminupdate'),
 
 
 ]

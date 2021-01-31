@@ -8,7 +8,7 @@
 <div class="profile-edit">
 <center>
 <h2>Profile Edit</h2>
-<form method="POST" action="http://127.0.0.1:8000/college-admin/update-profile/{{editdata.account_id}}/">   
+<form method="POST" action="../edit-profile/{{editdata.account_id}}">   
     {% csrf_token %}
     {{ form.errors }}
     {{ form.non_field_errors }}
@@ -58,9 +58,9 @@
         
 
 </table>
-<input type="submit" value="Update"/>
-<input type="button" value="Cancel"  onclick="location.href='http://127.0.0.1:8000/college-admin/profile'">
-<input type="button" value="Back"  onclick="location.href='http://127.0.0.1:8000/college-admin/profile'">
+<input type="submit" value="Update" onclick="profile_update()"/>
+<input type="button" value="Cancel"  onclick="location.href='../profile'">
+<input type="button" value="Back"  onclick="location.href='../profile'">
 {% if messages %}
 {% for j in messages %}
 <h2>{{j}}</h2>
@@ -68,7 +68,13 @@
 {% endif %}
 </form> 
 </center>
+<script>
+    function profile_update() {
+      alert("Profile Updated");
+    }
+    </script>
 </div>
+
 
 
 {% endblock %}

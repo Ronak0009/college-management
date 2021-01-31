@@ -19,9 +19,13 @@
     <input type="text" name="stdbranch" id="stdbranch" placeholder="Search by Branch" onkeyup="searchbranch();">
     <input type="text" name="stdsem" id="stdsem" placeholder="Search by Sem" onkeyup="searchsem();">
 
-    <input type="submit" name="pending" id="pending" value="Pending Accounts" onclick="location.href='http://127.0.0.1:8000/college-admin/student-account-pending-details'" >
-    <input type="submit" name="approved" id="approved" value="Approved Accounts" onclick="location.href='http://127.0.0.1:8000/college-admin/student-account-approved-details'" >
+    <input type="submit" name="pending" id="pending" value="Pending Accounts" onclick="location.href='../student-account-pending-details'" >
+    <input type="submit" name="approved" id="approved" value="Approved Accounts" onclick="location.href='../student-account-approved-details'" >
 
+    <!--actual path-->
+<!-- <input type="submit" name="pending" id="pending" value="Pending Accounts" onclick="location.href='http://127.0.0.1:8000/college-admin/student-account-pending-details'" >
+    <input type="submit" name="approved" id="approved" value="Approved Accounts" onclick="location.href='http://127.0.0.1:8000/college-admin/student-account-approved-details'" >-->
+    
 </div>
 
 <div class="datasection_student">
@@ -57,7 +61,10 @@
             <td>{{i.gender}}</td>
             <td>Accpeted</td>
             <td>Approved</td>
-            <td> <a href="http://127.0.01:8000/college-admin/edit-student/{{i.account_id}}">Edit</a></td>
+            <td> <a href="../edit-student/{{i.account_id}}">Edit</a></td>
+
+            <!--actual path-->
+            <!--<td> <a href="http://127.0.01:8000/college-admin/edit-student/{{i.account_id}}">Edit</a></td>-->
         </tr>
         {% endfor %}
     </table>

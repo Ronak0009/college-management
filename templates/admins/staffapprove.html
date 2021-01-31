@@ -9,7 +9,10 @@
 <div class="staff-approve">
 <center>
 <h2> Staff Approve</h2>
-<form method="POST" action="http://127.0.0.1:8000/college-admin/approved-staff/{{editdata.account_id}}/">   
+<form method="POST" action="../approve-staff/{{editdata.account_id}}">   
+
+    <!--actual path-->
+    <!--<form method="POST" action="http://127.0.0.1:8000/college-admin/approved-staff/{{editdata.account_id}}/">-->
     {% csrf_token %}
     {{ form.errors }}
     {{ form.non_field_errors }}
@@ -66,9 +69,13 @@
         
         </tr>
 </table>
-<input type="submit" value="Approve"/>
-<input type="button" value="Deny"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff-account-pending-details'">
-<input type="button" value="Back"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff'">
+<input type="submit" value="Approve" onclick="account_approved()"/>
+<input type="button" value="Deny"  onclick="location.href='../staff-account-pending-details'">
+<input type="button" value="Back"  onclick="location.href='../staff'">
+
+<!--actual path-->
+<!--<input type="button" value="Deny"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff-account-pending-details'">
+<input type="button" value="Back"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff'">-->
 {% if messages %}
 {% for j in messages %}
 <h2>{{j}}</h2>
@@ -76,6 +83,10 @@
 {% endif %}
 </form> 
 </center>
-
+<script>
+    function account_approved() {
+      alert("Staff Approved");
+    }
+    </script>
 </div>
 {% endblock %}
