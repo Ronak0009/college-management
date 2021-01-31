@@ -22,11 +22,11 @@
 
         {% endfor %}
     </table>
-                <input type="submit" value="Add"/>
+                <input type="submit" value="Add" onclick="announcement_add()"/>
            
-                <input type="button" value="Show"  onclick="location.href='http://127.0.0.1:8000/college-admin/all-announcement'"/>
+                <input type="button" value="Show"  onclick="location.href='../all-announcement'"/>
             
-                <input type="button" value="Cancel" onclick="location.href='http://127.0.0.1:8000/college-admin/home'"/>
+                <input type="button" value="Cancel" onclick="location.href='../home'"/>
          
                 {% if messages %}
                 {% for j in messages %}
@@ -36,7 +36,11 @@
 </div>
 
 </form>
-
+<script>
+    function announcement_add() {
+      alert("Announcement Added");
+    }
+    </script>
 </br>
 <div class="announcement_footer">
     <hr>

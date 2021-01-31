@@ -204,3 +204,115 @@ label{
 .footer p {
     text-align: center;
 }
+
+
+/*staff */
+
+#welcome-msg {
+    width: auto;
+    margin: 2px 1% 5px 2%;
+}
+
+
+#welcome-msg #welcome-content{
+    display: flex;
+    width: auto;
+    background-color: white;
+    margin-top: 1%;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
+    justify-content: space-between;
+}
+
+#welcome-msg #welcome-user{
+    display: flex;
+    margin-left: 2%;
+}
+
+#welcome-msg #timestamp{
+    display: flex;
+    vertical-align: middle;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 2%;
+    
+}
+
+input[type=button] {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 60%;
+}
+
+.staff-announcements{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    border-width: 1px;
+    height: auto;
+    margin-left: 2%;
+    margin-right: 1%;
+    text-align: l;
+    width: auto;
+    overflow: hidden;
+    min-height: 700px;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
+
+}
+.staff-announcements h3{
+    margin-left: 2%;
+}
+.staff-notification h3{
+    margin-left: 2%;
+}
+#staff_announcement_list{
+    width: 100%;
+}
+#staff_announcement_list tr td {
+    padding: 15px 5px 5px 5px;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+#satff_announcement_list tr td:hover{
+    background-color: #ddd;
+}
+
+
+#staff_notification_list{
+    width: 100%;
+}
+#staff_notification_list tr td {
+    padding: 15px 5px 5px 5px;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+#satff_notification_list tr td:hover{
+    background-color: #ddd;
+}
+
+.staff-notification{
+    float: left;
+    border: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px;
+    margin-left: 2%;
+    margin-right: 1%;
+    width: 22.5%;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.30);
+}
+
+/*staff announcement*/
+

@@ -17,6 +17,7 @@ class StaffForm(forms.ModelForm):
     # branch_choices = []
     # for i in branches:
     #     branch_choices.append((i[0],i[0]))
+
     branch_choices = ((branch[0],branch[0]) for branch in branches)
     # branch_choices = tuple(branch_choices)
     print(branch_choices)

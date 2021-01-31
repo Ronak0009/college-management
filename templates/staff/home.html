@@ -1,5 +1,55 @@
 {% extends './base.html' %}
+{% load static %}
+
+{% block title %}Staff-Home{% endblock %}
 
 {% block content %}
 
+<div id="welcome-msg">
+    <div id="welcome-content">
+        <div id="welcome-user">
+            <h2>Welcome, {{ request.user.first_name }}</h2>
+        </div>
+        <div id="timestamp">
+            {{ timestamp }}
+        </div>
+    </div>
+</div>
+<div class="staff-notification">
+    <div id="head">
+        <h3>Notifications</h3>
+    </div>
+    <table id="staff_notification_list">
+       
+        <tr>
+            <td>Notification  1</td>
+        </tr>
+        <tr>
+            <td>Notification 2</td>
+        </tr>
+        <tr>
+            <td>Notification 3</td>
+        </tr>
+    </table>
+</div>
+
+<div class="staff-announcements">
+    <div id="head">
+        <h3>Announcements <input type="button" value="Manage Announcements" onclick="location.href='../announcement/'" /></h3>
+    </div>
+    <table id="staff_announcement_list">
+
+        <tr>
+            
+            <td>Announcement 1</td>
+           
+        </tr>
+        <tr>
+            <td>Announcement 2</td>
+        </tr>
+        <tr>
+            <td>Announcement 3</td>
+        </tr>
+    </table>
+</div>
 {% endblock %}
