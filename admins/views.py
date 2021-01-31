@@ -39,8 +39,8 @@ def admin_announcement(request,*args,**kwargs):
                                            account_id=str(new_account_id))
             print(newannouncement)
             newannouncement.save()
-            messages.success(request,"Announcement Added")
-            return redirect("http://127.0.0.1:8000/college-admin/announcement/")
+            #messages.success(request,"Announcement Added")
+            return redirect("../announcement/")
         else:
             return HttpResponse(messages)
     return render(request,"common/announcement.html",{'announcementform1':announcementform1})
@@ -66,10 +66,6 @@ def admins_announcement_edit(request,account_id):
     print(account_id)
     displaydata=Announcement.objects.get(account_id=account_id)
     print(displaydata)
-    return render(request,'common/announcementedit.html',{'editdata':displaydata})
-
-#@login_required(login_url=common.views.login_view)
-def edit_announcement(request,account_id):
     updatedata=Announcement.objects.get(account_id=account_id)
     print(updatedata)
     print(account_id)
@@ -80,11 +76,36 @@ def edit_announcement(request,account_id):
         if form.is_valid():
             print('inform')
             form.save()
-            messages.success(request,"Announcement updated")
-            return render(request,'common/announcementedit.html',{'editdata':updatedata})
+            #messages.success(request,"Announcement updated")
+            return redirect("../all-announcement")
+            #return render(request,'common/announcementedit.html',{'editdata':updatedata})
+            #return render(request,'common/announcement_updated.html')
         else:
             return HttpResponse(messages)
-    print(form.errors)
+    return render(request,'common/announcementedit.html',{'editdata':displaydata})
+
+#@login_required(login_url=common.views.login_view)
+#def edit_announcement(request,account_id):
+        #return render(request,'common/announcemet_updated.html')
+
+#     updatedata=Announcement.objects.get(account_id=account_id)
+#     print(updatedata)
+#     print(account_id)
+#     if request.method == "POST":
+#         print('post')
+#         form=editforms2(request.POST or None,instance=updatedata)
+#         #error here
+#         if form.is_valid():
+#             print('inform')
+#             form.save()
+#             messages.success(request,"Announcement updated")
+#             #return redirect("../edit-announcement/")
+#             #return render(request,'common/announcement_updated.html',{'editdata':updatedata})
+#             return render(request,'common/announcement_updated.html')
+#         else:
+#             return HttpResponse(messages)
+
+    
 
 
 
@@ -125,9 +146,6 @@ def admins_profile_edit(request,account_id):
     print(account_id)
     displaydata=Staff.objects.get(account_id=account_id)
     print(displaydata)
-    return render(request,'admins/adminprofileedit.html',{'editdata':displaydata})
-
-def edit_profile(request,account_id):
     updatedata=Staff.objects.get(account_id=account_id)
     print(account_id)
     if request.method == "POST":
@@ -136,11 +154,28 @@ def edit_profile(request,account_id):
         #error here
         if form.is_valid():
             form.save()
-            messages.success(request,"Your Profile updated")
-            return render(request,'admins/adminprofileedit.html',{'editdata':updatedata})
+            #messages.success(request,"Your Profile updated")
+            #return render(request,'admins/adminprofileedit.html',{'editdata':updatedata})
+            return redirect("../profile")
         else:
             return HttpResponse(messages)
-    print(form.errors)
+    return render(request,'admins/adminprofileedit.html',{'editdata':displaydata})
+
+# def edit_profile(request,account_id):
+#     updatedata=Staff.objects.get(account_id=account_id)
+#     print(account_id)
+#     if request.method == "POST":
+#         print('post')
+#         form=editforms1(request.POST or None,instance=updatedata)
+#         #error here
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request,"Your Profile updated")
+#             return render(request,'admins/adminprofileedit.html',{'editdata':updatedata})
+#         else:
+#             return HttpResponse(messages)
+#     print(form.errors)
+
 
 # for data extraction for student
 #@login_required(login_url=common.views.login_view)
@@ -154,15 +189,12 @@ def admins_student_approved_detail_view(request,*args,**kwargs):
     obj=Student.objects.filter(isPending=False)
     return render(request,"admins/studentapproved.html",{'student':obj})
 
+
 #for edit page will be called to edit approved accounts
 def admins_student_approve(request,account_id):
     print(account_id)
     displaydata=Student.objects.get(account_id=account_id)
     print(displaydata)
-    return render(request,'admins/studentapprove.html',{'editdata':displaydata})
-
-#edit approved details will be validated
-def approve_student(request,account_id):
     updatedata=Student.objects.get(account_id=account_id)
     print(account_id)
     if request.method == "POST":
@@ -171,11 +203,29 @@ def approve_student(request,account_id):
         #error here
         if form.is_valid():
             form.save()
-            messages.success(request,"Student Approved")
-            return render(request,'admins/studentapprove.html',{'editdata':updatedata})
+            #messages.success(request,"Student Approved")
+            #return render(request,'admins/studentapprove.html',{'editdata':updatedata})
+            return redirect("../student-account-pending-details")
         else:
             return HttpResponse(messages)
-    print(form.errors)
+    return render(request,'admins/studentapprove.html',{'editdata':displaydata})
+
+
+#edit approved details will be validated
+# def approve_student(request,account_id):
+#     updatedata=Student.objects.get(account_id=account_id)
+#     print(account_id)
+#     if request.method == "POST":
+#         print('post')
+#         form=editforms(request.POST or None,instance=updatedata)
+#         #error here
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request,"Student Approved")
+#             return render(request,'admins/studentapprove.html',{'editdata':updatedata})
+#         else:
+#             return HttpResponse(messages)
+#     print(form.errors)
 
 #edit page will be called for unapproved details of students
 
@@ -188,11 +238,6 @@ def admins_student_edit(request,account_id):
     print(account_id)
     displaydata=Student.objects.get(account_id=account_id)
     print(displaydata)
-    return render(request,'admins/studentedit.html',{'editdata':displaydata})
-
-#to edit unapproved students
-#@login_required(login_url=common.views.login_view)
-def edit_student(request,account_id):
     updatedata=Student.objects.get(account_id=account_id)
     print(account_id)
     if request.method == "POST":
@@ -201,11 +246,30 @@ def edit_student(request,account_id):
         #error here
         if form.is_valid():
             form.save()
-            messages.success(request,"student data updated")
-            return render(request,'admins/studentedit.html',{'editdata':updatedata})
+            #messages.success(request,"student data updated")
+            #return render(request,'admins/studentedit.html',{'editdata':updatedata})
+            return redirect("../students")
         else:
             return HttpResponse(messages)
-    print(form.errors)
+    #print(form.errors)
+    return render(request,'admins/studentedit.html',{'editdata':displaydata})
+
+#to edit unapproved students
+#@login_required(login_url=common.views.login_view)
+# def edit_student(request,account_id):
+#     updatedata=Student.objects.get(account_id=account_id)
+#     print(account_id)
+#     if request.method == "POST":
+#         print('post')
+#         form=editforms(request.POST or None,instance=updatedata)
+#         #error here
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request,"student data updated")
+#             return render(request,'admins/studentedit.html',{'editdata':updatedata})
+#         else:
+#             return HttpResponse(messages)
+#     print(form.errors)
 
 
 
@@ -225,9 +289,6 @@ def admins_staff_approve(request,account_id):
     print(account_id)
     displaydata=Staff.objects.get(account_id=account_id)
     print(displaydata)
-    return render(request,'admins/staffapprove.html',{'editdata':displaydata})
-
-def approve_staff(request,account_id):
     updatedata=Staff.objects.get(account_id=account_id)
     print(account_id)
     if request.method == "POST":
@@ -236,19 +297,32 @@ def approve_staff(request,account_id):
         #error here
         if form.is_valid():
             form.save()
-            messages.success(request,"Staff Member Approved")
-            return render(request,'admins/staffapprove.html',{'editdata':updatedata})
+            #messages.success(request,"Staff Member Approved")
+            #return render(request,'admins/staffapprove.html',{'editdata':updatedata})
+            return redirect("../staff-account-pending-details")
         else:
             return HttpResponse(messages)
-    print(form.errors)
+    return render(request,'admins/staffapprove.html',{'editdata':displaydata})
+
+# def approve_staff(request,account_id):
+#     updatedata=Staff.objects.get(account_id=account_id)
+#     print(account_id)
+#     if request.method == "POST":
+#         print('post')
+#         form=editforms1(request.POST or None,instance=updatedata)
+#         #error here
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request,"Staff Member Approved")
+#             return render(request,'admins/staffapprove.html',{'editdata':updatedata})
+#         else:
+#             return HttpResponse(messages)
+#     print(form.errors)
 
 def admins_staff_edit(request,account_id):
     print(account_id)
     displaydata=Staff.objects.get(account_id=account_id)
     print(displaydata)
-    return render(request,'admins/staffedit.html',{'editdata':displaydata})
-
-def edit_staff(request,account_id):
     updatedata=Staff.objects.get(account_id=account_id)
     print(account_id)
     if request.method == "POST":
@@ -257,11 +331,27 @@ def edit_staff(request,account_id):
         #error here
         if form.is_valid():
             form.save()
-            messages.success(request,"Staff Member data updated")
-            return render(request,'admins/staffedit.html',{'editdata':updatedata})
+            #messages.success(request,"Staff Member data updated")
+            #return render(request,'admins/staffedit.html',{'editdata':updatedata})
+            return redirect("../staff")
         else:
             return HttpResponse(messages)
-    print(form.errors)
+    return render(request,'admins/staffedit.html',{'editdata':displaydata})
+
+# def edit_staff(request,account_id):
+#     updatedata=Staff.objects.get(account_id=account_id)
+#     print(account_id)
+#     if request.method == "POST":
+#         print('post')
+#         form=editforms1(request.POST or None,instance=updatedata)
+#         #error here
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request,"Staff Member data updated")
+#             return render(request,'admins/staffedit.html',{'editdata':updatedata})
+#         else:
+#             return HttpResponse(messages)
+#     print(form.errors)
 
 #@login_required(login_url=common.views.login_view)
 def logout_view(request, *args, **kwargs):

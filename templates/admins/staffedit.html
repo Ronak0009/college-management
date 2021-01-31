@@ -8,7 +8,10 @@
 <div class="staff-edit">
 <center>
 <h2>Staff Edit</h2>
-<form method="POST" action="http://127.0.0.1:8000/college-admin/update-staff/{{editdata.account_id}}/">   
+<form method="POST" action="../edit-staff/{{editdata.account_id}}">   
+
+    <!--actudal path-->
+    <!--<form method="POST" action="http://127.0.0.1:8000/college-admin/update-staff/{{editdata.account_id}}/">-->
     {% csrf_token %}
     {{ form.errors }}
     {{ form.non_field_errors }}
@@ -65,9 +68,13 @@
         
         </tr>
 </table>
-<input type="submit" value="Update"/>
-<input type="button" value="Cancel"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff-account-pending-details'">
-<input type="button" value="Back"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff'">
+<input type="submit" value="Update" onclick="staff_update()"/>
+<input type="button" value="Cancel"  onclick="location.href='../staff-account-pending-details'">
+<input type="button" value="Back"  onclick="location.href='../staff'">
+
+<!--actual path-->
+<!--<input type="button" value="Cancel"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff-account-pending-details'">
+<input type="button" value="Back"  onclick="location.href='http://127.0.0.1:8000/college-admin/staff'">-->
 {% if messages %}
 {% for j in messages %}
 <h2>{{j}}</h2>
@@ -75,6 +82,11 @@
 {% endif %}
 </form> 
 </center>
+<script>
+    function staff_update() {
+      alert("Staff Details Updated");
+    }
+    </script>
 </div>
 
 {% endblock %}

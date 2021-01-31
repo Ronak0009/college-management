@@ -7,8 +7,8 @@
 {% block content %}
 <center>
 <div class="announcement-edit">    
-<h2>Announcement Edit</h2>
-<form method="POST" action="../edit-announcement/{{editdata.account_id}}">   
+<!-- <h2>Announcement Edit</h2>
+<form method="POST" >   
     {% csrf_token %}
     {{ form.errors }}
     {{ form.non_field_errors }}
@@ -26,22 +26,19 @@
             <td><input type="text" name="account_id" value="{{editdata.account_id}}" readonly></td>
         </tr>
 </table>
-<input type="submit" value="Update" onclick="announcement_update()"/>
-<input type="button" value="Cancel"  onclick="location.href='../all-announcement'">
-<input type="button" value="Back"  onclick="location.href='../announcement'">
-<!-- {% if messages %}
+<input type="submit" value="Update"/> -->
+
+{% if messages %}
 {% for j in messages %}
 <h2>{{j}}</h2>
 {% endfor %}
-{% endif %} -->
-
+{% endif %}
 </form> 
+<a href="../all-announcement">
+<button>Cancel</button></a>
+<input type="button" value="Cancel"  onclick="location.href='../all-announcement'">
+<input type="button" value="Back"  onclick="location.href='../announcement'">
 </center>
-<script>
-    function announcement_update() {
-      alert("Announcement Detail Updated");
-    }
-    </script>
-</div>
 
+</div>
 {% endblock %}

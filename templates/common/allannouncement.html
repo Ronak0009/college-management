@@ -6,6 +6,7 @@
 {% block content %}
 <div class ="allannouncement">
     <h2>All Announcement</h2>
+    <a href="../home"><button>Back</button></a>
     <hr>
 <form  method="POST" > {% csrf_token %}
     
@@ -23,7 +24,7 @@
         <tr>
             <td>{{i.title}}</td>
             <td>{{i.description}}</td>
-            <td> <a href="http://127.0.01:8000/college-admin/edit-announcement/{{i.account_id}}">Edit</a></td>
+            <td> <a href="../edit-announcement/{{i.account_id}}">Edit</a></td>
         </tr>
         {% endfor %}
     </table>
