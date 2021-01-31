@@ -14,6 +14,30 @@ class Announcement(models.Model):
                             verbose_name="Account Id", default='')
     date = models.DateTimeField(default=datetime.now, blank=True)
 
+class Course(model.Model):
+    course_name = models.CharField(max_length=100, default='',
+                            verbose_name="Course Name")
+    
+    subject_code = models.CharField(max_length=15,
+                            verbose_name="Subject Code", primary_key=True)
+    
+    semester = models.CharField(max_length=2, default='',
+                            verbose_name='Semester')
+
+    branch = models.CharField(max_length=70, default='',
+                            verbose_name='Branch')
+    
+    year = models.CharField(verbose_name="Year", default=datetime.now().year)
+
+    ongoing = models.BooleanField(verbose_name="Ongoing", default=True)
+
+    completed = models.BooleanField(verbose_name="Completed", default=False)
+    
+class CourseFaculty(model.Models):
+    subject_code = models.ForeignKey(Course, on_delete=models.CASCADE)
+    
+    faculty_name = models.CharField(max_length=100, default='', verbose_name='Faculty')
+
 
 # Create your models here.
 # class AppUser(models.Model):
