@@ -158,17 +158,39 @@ input {
     color: blue;
 }
 
+#content-title #add-branch{
+    border-radius: 4px;
+    background-color: white;
+    border: none;
+    color: rgb(19, 15, 235);
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    width: 10%;
+    height: auto;
+    border: 1px solid rgb(19, 15, 235);
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+#content-title #add-branch:hover {
+    background-color: rgb(19, 15, 235);
+    color: white;
+    transition: 0.3s;
+}
+
+#content-title #add-branch:active{
+    background-color: white;
+}
 #courses-content a {
     text-decoration: none;
     color: black;
-    
     height: max-content;
 }
 
 .course-cards {
     margin: auto;
-    /* display: flex; */
-    /* min-height: 100%; */
     width: 100%;
 }
 .card {
@@ -177,8 +199,6 @@ input {
     width: 23%;
     float: left;
     height: 50%;
-    /* overflow: hidden; */
-    /* white-space: nowrap; */
     text-overflow: ellipsis;
     background-color: white;
     padding-bottom: 5px;
@@ -193,6 +213,7 @@ input {
     margin: auto;
     margin-left: 5%;
     text-align: left;
+    color: rgb(95, 95, 95);
   }
 
   .card desc {
@@ -202,6 +223,8 @@ input {
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
+
+
 
 /*for student
 .searchstudent input[type=text]{
@@ -927,3 +950,87 @@ margin: 5px;
     margin: 5px;
     }
 
+/* CSS for Add Branch Form */
+.form {
+    text-align: center;
+    background-color: white;
+    margin: auto;
+    width: max-content;
+    margin-top: 3%;
+    border: 1px rgb(255, 255, 255);
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    height: auto;
+    box-shadow: 0px 0px 5px 0px rgba(58, 57, 57, 0.3);
+    border-radius: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form input[class='text']{
+    width: 80%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -ms-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    -webkit-box-sizing:content-box; 
+    box-sizing:content-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form input:hover {
+    background: #ddd;
+    color: black;
+}
+
+.form input:focus {
+    background-color: rgb(241, 241, 241);
+}
+
+.label{
+    text-align: left;
+    padding-top: 4%;
+}
+
+.field {
+    float:right;
+    width: 100%;
+    box-sizing:content-box;
+}
+
+.field .errorlist{
+    list-style: symbols('*');
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    color: red;
+    text-decoration:none;
+}
+.form input[type=submit]{
+    border-radius: 4px;
+    background-color: rgb(19, 15, 235);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 16px;
+    padding: 15px;
+    width: 80%;
+    height: auto;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.form textarea {
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+.form input[type=submit]:hover {
+    background-color:  rgb(12, 10, 102);
+}
+
+.form input[type=submit]:active{
+    background-color: rgb(19, 15, 235);
+}

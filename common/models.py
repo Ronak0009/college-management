@@ -10,12 +10,7 @@ class Announcement(models.Model):
 
     description=models.CharField(max_length=100,
                             default='',
-<<<<<<< HEAD
-                            verbose_name="Decription")
-
-=======
                             verbose_name="Description")
->>>>>>> 858a6f74a262192c6d1ac6c0fdd40b2bf07e3d4a
     account_id = models.CharField(max_length=20,
                             verbose_name="Account Id",
                             default='')

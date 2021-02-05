@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from students.models import Student
 from admins.forms import editforms
 from admins.forms1 import editforms1
@@ -9,10 +9,10 @@ from django.contrib.auth.decorators import login_required
 import common
 from staff.models import Staff
 from  . import forms
+from .forms import AddBranchForm
 from .models import Branch
 from datetime import datetime
 from common.forms import LoginForm
-
 from common.methods import id_generator
 from common.announcementform import announcementform
 from common.models import Announcement, Course
@@ -107,11 +107,6 @@ def admins_announcement_edit(request,account_id):
 #             return HttpResponse(messages)
 
     
-
-
-
-
-# Create your views here.
 #@login_required(login_url=common.views.login_view)
 def admins_home_view(request, *args, **kwargs):
     time = datetime.now()
@@ -121,28 +116,6 @@ def admins_home_view(request, *args, **kwargs):
         'timestamp': currentTime,
     }
     return render(request, "admins/home.html",{'context':context,'announcement_data':announcement_data})
-
-
-#@login_required(login_url=common.views.login_view)
-def admins_courses_view(request, *args, **kwargs):
-    branches = Branch.objects.all().order_by('branch_name')
-    branch_info = {}
-    for branch in branches:
-        branch_info[branch.branch_name] = {}
-        branch_info[branch.branch_name]["staff"] = len(Staff.objects.filter(branch=branch.branch_name, isPending=False))
-        hod = Staff.objects.filter(designation="Head Of Department", branch=branch.branch_name, isPending=False)
-
-        if hod:
-            branch_info[branch.branch_name]["hod"] = hod[0].firstName + " " + hod[0].lastName
-        else:
-            branch_info[branch.branch_name]["hod"] = "Unspecified"
-        courses = Course.objects.filter(branch=branch.branch_name)
-        branch_info[branch.branch_name]["number"] = len(courses)
-    context = {
-        'branches' : branches,
-        'branch_info': branch_info,
-    }
-    return render(request, "admins/courses.html", context)
 
 #@login_required(login_url=common.views.login_view)
 def admins_students_view(request, *args, **kwargs):
@@ -370,6 +343,60 @@ def admins_staff_edit(request,account_id):
 #             return HttpResponse(messages)
 #     print(form.errors)
 
+#@login_required(login_url=common.views.login_view)
+def admins_courses_view(request, *args, **kwargs):
+    branches = Branch.objects.all().order_by('branch_name')
+    branch_info = {}
+    for branch in branches:
+        branch_info[branch.branch_name] = {}
+        branch_info[branch.branch_name]["staff"] = len(Staff.objects.filter(branch=branch.branch_name, isPending=False))
+        hod = Staff.objects.filter(designation="Head Of Department", branch=branch.branch_name, isPending=False)
+
+        if hod:
+            branch_info[branch.branch_name]["hod"] = hod[0].firstName + " " + hod[0].lastName
+        else:
+            branch_info[branch.branch_name]["hod"] = "Unspecified"
+        courses = Course.objects.filter(branch=branch.branch_name)
+        branch_info[branch.branch_name]["number"] = len(courses)
+    context = {
+        'branches' : branches,
+        'branch_info': branch_info,
+    }
+    return render(request, "admins/courses.html", context)
+
+def create_branch_view(request, *args, **kwargs):
+    if request.method == "POST":
+        form = AddBranchForm(request.POST or None)
+        if form.is_valid():
+            details = form.cleaned_data
+            newBranchName = details['branchName']
+            newCode = details['branchCode']
+            newDescription = details['description']
+
+            newBranch = Branch(
+                branch_name=str(newBranchName.capitalize()),
+                code=str(newCode),
+                description=str(newDescription)
+            )
+            newBranch.save()
+    else:
+        form = AddBranchForm(request.POST or None)
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += 'error'
+
+    context = {
+        'form': form,
+    }
+    return render(request, "admins/add_branch.html", context)
+
+def branch_view(request, branch_code, *args, **kwargs):
+    print(branch_code)
+    selectedBranch = get_object_or_404(Branch,code=branch_code)
+
+    context = {
+        "branch":selectedBranch
+    }
+    return render(request, "admins/branch_page.html",context)
 #@login_required(login_url=common.views.login_view)
 def logout_view(request, *args, **kwargs):
     logout(request)

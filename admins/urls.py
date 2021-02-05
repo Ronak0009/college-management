@@ -50,5 +50,9 @@ urlpatterns = [
     path('edit-profile/<int:account_id>',admins_profile_edit,name='adminedit'),
     #path('update-profile/<int:account_id>/',edit_profile,name='adminupdate'),
 
+    # to create a new branch
+    path('create-branch/', create_branch_view, name="create-branch"),
+
+    path('courses/<str:branch_code>', branch_view, name="bracch-details")
 
 ]

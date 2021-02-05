@@ -29,7 +29,7 @@ class StudentForm(forms.ModelForm):
                                              "size":"40",
                                             "class":"text"}))
     username = forms.CharField(label='Username:', min_length=6, max_length=40,
-                widget=forms.TextInput(attrs={"placeholder":"Your Username",
+                widget=forms.TextInput(attrs={"placeholder":"Create a Username",
                                              "size":"40",
                                              "class":"text"}))
     passwd = forms.CharField(label='Password:', min_length=8, max_length=40,
