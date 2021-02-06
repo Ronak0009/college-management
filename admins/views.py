@@ -364,6 +364,7 @@ def admins_courses_view(request, *args, **kwargs):
     }
     return render(request, "admins/courses.html", context)
 
+#@login_required(login_url=common.views.login_view)
 def create_branch_view(request, *args, **kwargs):
     if request.method == "POST":
         form = AddBranchForm(request.POST or None)
@@ -389,14 +390,19 @@ def create_branch_view(request, *args, **kwargs):
     }
     return render(request, "admins/add_branch.html", context)
 
+#@login_required(login_url=common.views.login_view)
 def branch_view(request, branch_code, *args, **kwargs):
     print(branch_code)
     selectedBranch = get_object_or_404(Branch,code=branch_code)
-
+    staffOfBranch = Staff.objects.filter(branch=selectedBranch.branch_name, isPending=False)
+    coursesInBranch = Course.objects.filter(branch=selectedBranch.branch_name)
     context = {
-        "branch":selectedBranch
+        "branch":selectedBranch,
+        "staff":staffOfBranch,
+        "courses":coursesInBranch,
     }
     return render(request, "admins/branch_page.html",context)
+
 #@login_required(login_url=common.views.login_view)
 def logout_view(request, *args, **kwargs):
     logout(request)
