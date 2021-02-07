@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 import common
 from staff.models import Staff
 from  . import forms
-from .forms import AddBranchForm
+from .forms import AddBranchForm, EditBranchForm
 from .models import Branch
 from datetime import datetime
 from common.forms import LoginForm
@@ -370,8 +370,8 @@ def create_branch_view(request, *args, **kwargs):
         form = AddBranchForm(request.POST or None)
         if form.is_valid():
             details = form.cleaned_data
-            newBranchName = details['branchName']
-            newCode = details['branchCode']
+            newBranchName = details['branch_name']
+            newCode = details['code']
             newDescription = details['description']
 
             newBranch = Branch(
@@ -392,7 +392,6 @@ def create_branch_view(request, *args, **kwargs):
 
 #@login_required(login_url=common.views.login_view)
 def branch_view(request, branch_code, *args, **kwargs):
-    print(branch_code)
     selectedBranch = get_object_or_404(Branch,code=branch_code)
     staffOfBranch = Staff.objects.filter(branch=selectedBranch.branch_name, isPending=False)
     coursesInBranch = Course.objects.filter(branch=selectedBranch.branch_name)
@@ -402,6 +401,42 @@ def branch_view(request, branch_code, *args, **kwargs):
         "courses":coursesInBranch,
     }
     return render(request, "admins/branch_page.html",context)
+
+def edit_branch_view(request, branch_code, *args, **kwargs):
+    selectedBranch = get_object_or_404(Branch,code=branch_code)
+    print("ok",selectedBranch)
+    print(selectedBranch)
+    intial_data = {
+        'branchName':selectedBranch.branch_name,
+        'branchCode':selectedBranch.code,
+        'description':selectedBranch.description
+    }
+    if request.method == "POST":
+        print("whyyyy")
+        form = EditBranchForm(request.POST, instance=selectedBranch)
+        if form.is_valid():
+            # details = form.cleaned_data
+            # newBranchName = details['branch_name']
+            # newCode = details['code']
+            # newDescription = details['description']
+
+            # newBranch = Branch(
+            #     branch_name=str(newBranchName.capitalize()),
+            #     code=str(newCode),
+            #     description=str(newDescription)
+            # )
+            form.save()
+    else:
+        form = EditBranchForm(request.POST or None, instance=selectedBranch)
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += 'error'
+
+    context = {
+        'form': form,
+    }
+    
+    return render(request,'admins/edit_branch.html',context)
+
 
 #@login_required(login_url=common.views.login_view)
 def logout_view(request, *args, **kwargs):
