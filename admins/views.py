@@ -19,7 +19,7 @@ from admins.forms2 import editforms2
 
 '''
 TODO:
-wherever storing branch information, change from branch name to branch code
+Wherever storing branch information, change from branch name to branch code.
 '''
 
 #admin announcement
