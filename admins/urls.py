@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from .views import *
 
 app_name = 'college-admin'
@@ -56,7 +56,9 @@ urlpatterns = [
     # to create a new branch
     path('create-branch/', create_branch_view, name="create-branch"),
 
-    path('courses/<str:branch_code>/', branch_view, name="branch-details"),
-    path('courses/<str:branch_code>/edit/', edit_branch_view, name="edit-branch"),
+    re_path(r'^courses/(?P<branch_code>[0-9]{2})/$', branch_view, name="branch-details"),
+    re_path(r'courses/(?P<branch_code>[0-9]{2})/edit/$', edit_branch_view, name="edit-branch"),
+    re_path(r'courses/(?P<course_code>[0-9]{2})/add-course/$', add_course_view, name="add-course"),
+
 
 ]

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Branch
 from students.models import Student
+from common.models import Course
 from django.utils.safestring import mark_safe
 import re
 
@@ -169,3 +170,87 @@ class EditBranchForm(forms.ModelForm):
                 return cleaned_data
         else:
             return cleaned_data
+
+class AddCourseForm(forms.ModelForm):
+    error_css_class = 'error'
+    required_css_class = 'required'
+
+    sem_choices=Student.sem_choices
+    branches = Branch.objects.values_list('code','branch_name')
+    branch_choices = ((branch[0],branch[1]) for branch in branches)
+    type_choices = Course.type_choice
+    active_choices = ((True,'Yes'),
+                    (False,'No'))
+
+    course_name = forms.CharField(label='Course Name:',max_length=100,min_length=2,
+                        widget=forms.TextInput(attrs={"placeholder":"Enter Course Name",
+                                            "size":"40",
+                                            "class":"text",
+                                            "name":"course_name"}))
+
+    subject_code = forms.CharField(label='Subject Code:',max_length=100,min_length=2,
+                        widget=forms.TextInput(attrs={"placeholder":"Enter Subject Code",
+                                            "size":"40",
+                                            "class":"text",
+                                            "name":"subject_code"}))
+    description = forms.CharField(label='Description:', max_length=300,
+                        widget=forms.Textarea(attrs={"placeholder":"Enter Description",
+                                            "size":"40",
+                                            "class":"text",
+                                            "height":"5",
+                                            "width":"100",
+                                            "name":"description"}))
+    
+    semester = forms.ChoiceField(label="Semester:",choices=sem_choices,
+                         widget=forms.Select(attrs={
+                             "class":"choice1"}))
+
+    branch = forms.ChoiceField(label="Department:",choices=branch_choices,
+                         widget=forms.Select(attrs={
+                             "class":"choice1",
+                             "name":"branch"}))
+
+    course_credits = forms.CharField(label='Credits:', min_length=1, max_length=2,
+                        widget=forms.TextInput(attrs={"placeholder":"Enter Course Credits",
+                                             "size":"10",
+                                             "class":"text",
+                                             "name":"course_credits"}))
+
+    course_type = forms.ChoiceField(label="Type:", choices=type_choices,
+                        widget=forms.Select(attrs={
+                             "class":"choice1",
+                             "name":"course_type"}))
+
+    start_date = forms.DateField(label="Start Date:", 
+                        widget=forms.DateInput(attrs={
+                            "placeholder":"dd/mm/yyyy",
+                            "class":"datefield",
+                            "type":"date",
+                            "name":"start_date"}))
+                
+    end_date = forms.DateField(label="End Date:", 
+                        widget=forms.DateInput(attrs={
+                            "placeholder":"dd/mm/yyyy",
+                            "class":"datefield",
+                            "type":"date",
+                            "name":"end_date"}))
+
+    active = forms.ChoiceField(label="Active:",choices=active_choices,
+                        widget=forms.Select(attrs={
+                             "class":"choice1",
+                             "name":"active"}))
+
+    class Meta:
+        model=Course
+        fields = [
+            'course_name',
+            'subject_code',
+            'description',
+            'semester',
+            'branch',
+            'course_credits',
+            'course_type',
+            'start_date',
+            'end_date',
+            'active'
+        ]

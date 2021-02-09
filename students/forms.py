@@ -1,6 +1,7 @@
 from django import forms
 from students.models import Student
 from staff.models import Staff
+from admins.models import Branch
 from django.contrib.auth.password_validation import validate_password
 from django.utils.safestring import mark_safe
 import re
@@ -12,7 +13,8 @@ class StudentForm(forms.ModelForm):
 
     gender_choice=Student.gender_choices
 
-    branch_choices= Student.branch_choices 
+    branches = Branch.objects.values_list('branch_name')
+    branch_choices = ((branch[0],branch[0]) for branch in branches)
 
     sem_choices=Student.sem_choices
     

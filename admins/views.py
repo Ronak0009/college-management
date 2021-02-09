@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from students.models import Student
-from admins.forms import editforms
 from admins.forms1 import editforms1
 from django.contrib import messages
 from django.http import HttpResponse
@@ -9,15 +8,19 @@ from django.contrib.auth.decorators import login_required
 import common
 from staff.models import Staff
 from  . import forms
-from .forms import AddBranchForm, EditBranchForm
+from .forms import editforms, AddBranchForm, EditBranchForm, AddCourseForm
 from .models import Branch
 from datetime import datetime
 from common.forms import LoginForm
-from common.methods import id_generator
+from common.methods import id_generator, course_id_generator
 from common.announcementform import announcementform
 from common.models import Announcement, Course
 from admins.forms2 import editforms2
 
+'''
+TODO:
+wherever storing branch information, change from branch name to branch code
+'''
 
 #admin announcement
 
@@ -25,16 +28,12 @@ from admins.forms2 import editforms2
 def admin_announcement(request,*args,**kwargs):
     announcementform1 = announcementform(request.POST or None)
     if request.method == 'POST':
-        print('post1')
         announcementform1 = announcementform(request.POST or None)
         if announcementform1.is_valid():
-            print('post')
             details = announcementform1.cleaned_data
             new_title=details['title']
             new_description=details['description']
             new_account_id = id_generator()
-            print(new_title)
-            print(new_description)
             newannouncement = Announcement(title=str(new_title.capitalize()),
                                            description=str(new_description.capitalize()),
                                            account_id=str(new_account_id))
@@ -57,8 +56,6 @@ def admin_add_announcement(request,*args,**kwargs):
 def announcement_done(request,*args,**kwargs):
     announcementform1 = announcementform(request.POST or None)
     return render(request,"common/announcement.html",{'announcementform1':announcementform1})
-
-
 
 #admin announcement edit 
 
@@ -416,7 +413,7 @@ def create_branch_view(request, *args, **kwargs):
 def branch_view(request, branch_code, *args, **kwargs):
     selectedBranch = get_object_or_404(Branch,code=branch_code)
     staffOfBranch = Staff.objects.filter(branch=selectedBranch.branch_name, isPending=False)
-    coursesInBranch = Course.objects.filter(branch=selectedBranch.branch_name)
+    coursesInBranch = Course.objects.filter(branch=branch_code).order_by('semester')
     context = {
         "branch":selectedBranch,
         "staff":staffOfBranch,
@@ -438,17 +435,8 @@ def edit_branch_view(request, branch_code, *args, **kwargs):
         print("whyyyy")
         form = EditBranchForm(request.POST, instance=selectedBranch)
         if form.is_valid():
-            # details = form.cleaned_data
-            # newBranchName = details['branch_name']
-            # newCode = details['code']
-            # newDescription = details['description']
-
-            # newBranch = Branch(
-            #     branch_name=str(newBranchName.capitalize()),
-            #     code=str(newCode),
-            #     description=str(newDescription)
-            # )
             form.save()
+            return redirect('..')
     else:
         form = EditBranchForm(request.POST or None, instance=selectedBranch)
         for field in form.errors:
@@ -460,6 +448,57 @@ def edit_branch_view(request, branch_code, *args, **kwargs):
     
     return render(request,'admins/edit_branch.html',context)
 
+#@login_required(login_url=common.views.login_view)
+def add_course_view(request, *args, **kwargs):
+    '''
+    TODO: 
+    change the branch field from branch name to branch code
+    '''
+    if request.method == "POST":
+        form = AddCourseForm(request.POST or None)
+        if form.is_valid():
+            details = form.cleaned_data
+            newBranch = details['branch']
+            print("hellollooooo",newBranch)
+            # newBranchCode =  Branch.objects.filter(branch_name=newBranch)[0].code
+            newCourseId = course_id_generator(newBranch)
+            newCourse = details['course_name']
+            newSubjectCode = details['subject_code']
+            newDescription = details['description']
+            newSemester = details['semester']
+            newCourseCredits = details['course_credits']
+            newCourseType = details['course_type']
+            newStartDate = details['start_date']
+            newEndDate = details['end_date']
+            newActive = True
+            if details['active'] == 'No':
+                newActive = False
+
+            newCourse = Course(
+                course_id=newCourseId,
+                course_name=newCourse,
+                description=newDescription,
+                subject_code=newSubjectCode,
+                branch=newBranch,
+                semester=newSemester,
+                course_credits=newCourseCredits,
+                course_type=newCourseType,
+                start_date=newStartDate,
+                end_date=newEndDate,
+                active=newActive
+            )
+            newCourse.save()
+            path = "college-admin/courses/" + newBranchCode + "/"
+            return redirect('..')
+    else:
+        form = AddCourseForm(request.POST or None)
+        for field in form.errors:
+            form[field].field.widget.attrs['class'] += 'error'
+    context = {
+        'form': form,
+    }
+
+    return render(request,'admins/add_course.html',context)
 
 #@login_required(login_url=common.views.login_view)
 def logout_view(request, *args, **kwargs):
