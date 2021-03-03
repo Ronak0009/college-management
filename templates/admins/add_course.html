@@ -15,8 +15,6 @@
 <div id="add-branch-form">
     <div class="form">
         <h2>Create Course</h2>
-    
-
     <form method='POST'> {% csrf_token %}
         <table>
             {% for field in form %}
@@ -30,7 +28,6 @@
                 </td>
             </tr>
             {% endfor %}
-    
             <tr>
                 <td></td>
                 <td>
@@ -38,7 +35,6 @@
                 </td>
             </tr>
         </table>
-
     </form>
 </div>
 </div>
